@@ -582,7 +582,7 @@ Transform:
   m_GameObject: {fileID: 1904398245}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.45, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -601,10 +601,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a275e9df0fc0846a896fad9b393efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHeight: 0
+  crouchHeight: 0
   currentSpeed: 0
   baseSpeed: 5
-  gravity: 9.81
+  gravity: -9.81
   jumpHeight: 1
+  isSprinting: 0
 --- !u!143 &1904398251
 CharacterController:
   m_ObjectHideFlags: 0
