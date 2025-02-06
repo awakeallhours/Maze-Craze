@@ -495,7 +495,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: 1, z: 40}
+  m_LocalScale: {x: 40, y: 2, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 1904398251}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -582,7 +582,7 @@ Transform:
   m_GameObject: {fileID: 1904398245}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 2.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -601,13 +601,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a275e9df0fc0846a896fad9b393efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHeight: 0
-  crouchHeight: 0
-  currentSpeed: 0
-  baseSpeed: 5
-  gravity: -9.81
+  playerHeight: 2
+  crouchHeight: 1.25
   jumpHeight: 1
+  baseSpeed: 5
+  currentSpeed: 0
+  isGrounded: 0
+  isJumping: 0
+  isCrouching: 0
   isSprinting: 0
+  isMoving: 0
+  isSneaking: 0
 --- !u!143 &1904398251
 CharacterController:
   m_ObjectHideFlags: 0
