@@ -15,8 +15,8 @@ public class NoRbPlayerController : MonoBehaviour
     
     [SerializeField, Tooltip("Crouch height divisor, default is 2. Which sets crouch to half of the player height")] public float crouchHeight = 2f;
     [SerializeField, Tooltip("Player jump height")] float jumpHeight = 1f;
-    [SerializeField, Tooltip("The base movement speed for the player")] float baseSpeed = 5f;
-    [SerializeField, Tooltip("Allows us to view the current speed, not neccessary but useful. Value should NOT be edited manually.")] float currentSpeed;
+    [SerializeField, Tooltip("The base movement speed for the player")] public float baseSpeed = 5f;
+    [SerializeField, Tooltip("Allows us to view the current speed, not neccessary but useful. Value should NOT be edited manually")] public float currentSpeed;
     
     //bools
     public bool isGrounded;
