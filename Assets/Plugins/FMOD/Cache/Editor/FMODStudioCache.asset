@@ -121,7 +121,7 @@ MonoBehaviour:
   Path: FMODProject/MazeCrazeFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638745778908151075
+  lastModified: 638747472317818974
   FileSizes: []
   Exists: 1
 --- !u!114 &-2437546602661159225
@@ -157,7 +157,7 @@ MonoBehaviour:
   Path: FMODProject/MazeCrazeFMOD/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638745778908180981
+  lastModified: 638747472317823971
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -186,7 +186,7 @@ MonoBehaviour:
   - {fileID: -2873859789287370184}
   StringsBanks:
   - {fileID: 4887066677642538021}
-  cacheTime: 638745778908619565
+  cacheTime: 638747472317828979
   cacheVersion: 131622
 --- !u!114 &592954134383596481
 MonoBehaviour:
@@ -241,7 +241,7 @@ MonoBehaviour:
   Path: FMODProject/MazeCrazeFMOD/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 638745778908619565
+  lastModified: 638747472317828979
   FileSizes: []
   Exists: 1
 --- !u!114 &4887066677642538021
@@ -259,7 +259,7 @@ MonoBehaviour:
   Path: FMODProject/MazeCrazeFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638745778908161023
+  lastModified: 638747472317823971
   FileSizes:
   - Name: 
     Value: 980
@@ -279,7 +279,7 @@ MonoBehaviour:
   Path: FMODProject/MazeCrazeFMOD/Build/Desktop/Enemies.bank
   Name: Enemies
   StudioPath: bank:/Enemies
-  lastModified: 638745778908111402
+  lastModified: 638747472317813937
   FileSizes: []
   Exists: 1
 --- !u!114 &6854910411240095484
@@ -324,6 +324,6 @@ MonoBehaviour:
   Path: FMODProject/MazeCrazeFMOD/Build/Desktop/Environment.bank
   Name: Environment
   StudioPath: bank:/Environment
-  lastModified: 638745778908121378
+  lastModified: 638747472317813937
   FileSizes: []
   Exists: 1
