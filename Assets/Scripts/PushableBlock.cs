@@ -9,7 +9,6 @@ public class PushableBlock : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -17,11 +16,13 @@ public class PushableBlock : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        //allows objects tagged as pushable to be pushed 
         if (other.attachedRigidbody !=null && other.CompareTag("Pushable"))
         {
+            //pushes the object in the players fowrward direction
             Vector3 forceDirection = transform.forward;
             other.attachedRigidbody.AddForce(forceDirection * pushForce, ForceMode.Force);
-            Debug.Log("Pushing");
+            
         }
        
     }

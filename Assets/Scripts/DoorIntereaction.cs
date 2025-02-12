@@ -57,11 +57,7 @@ public class DoorIntereaction : MonoBehaviour
                 StopCoroutine(_currentCoroutine);
                 _currentCoroutine = null;
             }
-                
-
             _currentCoroutine = StartCoroutine(ToggleDoor());
-
-            
         }
     }
 
@@ -72,8 +68,6 @@ public class DoorIntereaction : MonoBehaviour
             Debug.Log("Player entered");
             canOpen = true;
         }
-       
-        
     }
 
     private void OnTriggerExit(Collider other)
@@ -83,6 +77,5 @@ public class DoorIntereaction : MonoBehaviour
             Debug.Log("Player exited");
             canOpen = false;
         }
-            
     }
 }
