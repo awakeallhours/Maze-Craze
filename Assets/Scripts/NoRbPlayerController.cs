@@ -32,10 +32,8 @@ public class NoRbPlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        
         playerHeight = controller.height;
         crouchHeight = playerHeight / crouchHeight;
-
     }
 
     void Update()
