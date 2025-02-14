@@ -17,10 +17,14 @@ void Update()
     if (IsPlayerMovingAndGrounded() && coroutineReset)
     {
         coroutineReset = false;
+
         //determine a current speed multiplier from the player controller script to be used to alter footstep speed
         currentSpeedMultiplier = playerController.currentSpeed / playerController.baseSpeed;
-        //get the reciprocal of the current speed multiplier so that as the multiplier increases the delay time gets smaller, distribute this between the player's 2 feet, then scale down by an arbitrary amount 
-        footstepsDelayTime = 1 / currentSpeedMultiplier / 2 / 1.5f;
+
+        //get the reciprocal of the current speed multiplier so that as the multiplier increases the delay time gets smaller, 
+        //divide this by the base speed multiplied by an arbitrary amount
+        footstepsDelayTime = 1 / currentSpeedMultiplier / (playerController.baseSpeed * 0.66f);
+        
         playerFootstepsEventEmitter.Play();
         StartCoroutine(FootstepsDelay());
     }
