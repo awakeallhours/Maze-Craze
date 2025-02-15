@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.00.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="ParameterPreset" id="{2f0bedc0-f7c6-49d3-839c-b0c1460242e2}">
 		<property name="name">
 			<value>terrainType</value>
@@ -12,8 +12,11 @@
 		</relationship>
 	</object>
 	<object class="GameParameter" id="{ae291df9-b1c3-4998-a865-1bb381aa881d}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
 		<property name="maximum">
-			<value>2</value>
+			<value>3</value>
 		</property>
 		<property name="isHeld">
 			<value>true</value>

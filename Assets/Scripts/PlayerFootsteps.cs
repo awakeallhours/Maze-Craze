@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Data.Common;
 using FMODUnity;
 using UnityEngine;
 
@@ -10,6 +11,13 @@ private StudioEventEmitter playerFootstepsEventEmitter;
 private float currentSpeedMultiplier;
 [SerializeField, Tooltip("Used for visual purposes only. Please do not edit this in the inspector")] private float footstepsDelayTime = 0.333f;
 private bool coroutineReset = true;
+[SerializeField, Tooltip("Used to determine what game layers the footsteps terrain type raycast should look for")] private LayerMask targetLayers;
+
+//this variable is used to determine the terrain material that is underneath the player
+//0 = unknown terrain, 1 = grass, 2 = stone
+public int terrainType;
+
+private float debugFMODParameter;
 
 void Update()
 {
@@ -30,7 +38,42 @@ void Update()
     }
 }
 
-void Start()
+    void FixedUpdate()
+    {
+        if(Physics.Raycast(playerGameObject.transform.position, Vector3.down, out RaycastHit hitInfo, 100f, targetLayers, QueryTriggerInteraction.Ignore))
+        {
+            Debug.DrawRay(playerController.gameObject.transform.position, playerController.gameObject.transform.TransformDirection(Vector3.down) * hitInfo.distance, Color.red);
+            //Debug.Log(hitInfo.collider.gameObject.name + " was hit!");
+            //Debug.Log(hitInfo.collider.gameObject.layer);
+
+            //user layer 20 = Grass, user layer 21 = Stone
+            if(hitInfo.collider.gameObject.layer == 20)
+            {
+                terrainType = 1;
+            }
+            if(hitInfo.collider.gameObject.layer == 21)
+            {
+                terrainType = 2;
+            }
+            else
+            {
+                terrainType = 0;              
+            }
+        }
+        else
+        {
+            terrainType = 0;     
+            
+            Debug.DrawRay(playerController.gameObject.transform.position, playerController.gameObject.transform.TransformDirection(Vector3.down) * 100f, Color.green);
+            //Debug.Log("No hit!");      
+        }
+
+        playerFootstepsEventEmitter.EventInstance.setParameterByName("terrainType", terrainType, false);
+        playerFootstepsEventEmitter.EventInstance.getParameterByName("terrainType", out debugFMODParameter);
+        Debug.Log(debugFMODParameter);
+    }
+
+    void Start()
 {
     playerController = playerGameObject.GetComponent<NoRbPlayerController>();
     playerFootstepsEventEmitter = playerGameObject.GetComponent<StudioEventEmitter>();

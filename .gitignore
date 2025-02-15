@@ -86,6 +86,9 @@ crashlytics-build.properties
 /FMODProject/.cache/**
 /FMODProject/.unsaved/**
 /FMODProject/.user/**
+/FMODProject/MazeCrazeFMOD/.cache/**
+/FMODProject/MazeCrazeFMOD/.unsaved/**
+/FMODProject/MazeCrazeFMOD/.user/**
 
 # Ignore bank files in the StreamingAssets folder. (FMOD ignore)
 /[Aa]ssets/StreamingAssets/**/*.bank
