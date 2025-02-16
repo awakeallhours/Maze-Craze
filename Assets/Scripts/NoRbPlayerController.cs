@@ -18,6 +18,7 @@ public class NoRbPlayerController : MonoBehaviour
     [SerializeField, Tooltip("The base movement speed for the player")] public float baseSpeed = 5f;
     [SerializeField, Tooltip("Allows us to view the current speed, not neccessary but useful. Value should NOT be edited manually")] public float currentSpeed;
     
+    
     //bools
     public bool isGrounded;
     public bool isJumping = false;
@@ -27,13 +28,18 @@ public class NoRbPlayerController : MonoBehaviour
     public bool isSneaking = false;
 
     private CharacterController controller;
+    private PlayerAttributes attributes;
     private Vector3 velocity;
+    
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        attributes = GetComponent<PlayerAttributes>();
         playerHeight = controller.height;
         crouchHeight = playerHeight / crouchHeight;
+
+        
     }
 
     void Update()
@@ -61,9 +67,14 @@ public class NoRbPlayerController : MonoBehaviour
         controller.Move(move * currentSpeed * Time.deltaTime);
         currentSpeed = baseSpeed;
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift)&& !attributes.noStamina)
         {
             currentSpeed *= 2;
+
+            if (attributes.noStamina)
+            {
+                currentSpeed *= 1;
+            }
         }
         else
         {
