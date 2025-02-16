@@ -80,15 +80,7 @@ crashlytics-build.properties
 !/[Aa]ssets/Editor Default Resources/FMOD/*
 
 # Ignore the Cache folder since it is updated locally. (FMOD ignore)
-/[Aa]ssets/Plugins/FMOD/Cache/**
-
-# Standalone (Non-Unity) FMOD Studio folders & files - not needed for source control (FMOD ignore)
-/FMODProject/.cache/**
-/FMODProject/.unsaved/**
-/FMODProject/.user/**
-/FMODProject/MazeCrazeFMOD/.cache/**
-/FMODProject/MazeCrazeFMOD/.unsaved/**
-/FMODProject/MazeCrazeFMOD/.user/**
+/[Aa]ssets/Plugins/FMOD/Cache/*
 
 # Ignore bank files in the StreamingAssets folder. (FMOD ignore)
 /[Aa]ssets/StreamingAssets/**/*.bank
