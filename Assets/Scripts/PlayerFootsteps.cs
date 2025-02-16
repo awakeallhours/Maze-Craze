@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Data.Common;
 using FMODUnity;
 using UnityEngine;
 
@@ -8,10 +7,12 @@ public class PlayerFootsteps : MonoBehaviour
 [SerializeField, Tooltip("If empty, drag the game object associated with the player into this field")] private GameObject playerGameObject;
 private NoRbPlayerController playerController;
 private StudioEventEmitter playerFootstepsEventEmitter;
+private StudioParameterTrigger terrainTypeParameterFMOD;
 private float currentSpeedMultiplier;
 [SerializeField, Tooltip("Used for visual purposes only. Please do not edit this in the inspector")] private float footstepsDelayTime = 0.333f;
 private bool coroutineReset = true;
 [SerializeField, Tooltip("Used to determine what game layers the footsteps terrain type raycast should look for")] private LayerMask targetLayers;
+private string hitLayer;
 
 //this variable is used to determine the terrain material that is underneath the player
 //0 = unknown terrain, 1 = grass, 2 = stone
@@ -46,12 +47,12 @@ void Update()
             //Debug.Log(hitInfo.collider.gameObject.name + " was hit!");
             //Debug.Log(hitInfo.collider.gameObject.layer);
 
-            //user layer 20 = Grass, user layer 21 = Stone
-            if(hitInfo.collider.gameObject.layer == 20)
+            hitLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
+            if(hitLayer == "Grass")
             {
                 terrainType = 1;
             }
-            if(hitInfo.collider.gameObject.layer == 21)
+            if(hitLayer == "Stone")
             {
                 terrainType = 2;
             }
@@ -62,6 +63,7 @@ void Update()
         }
         else
         {
+            hitLayer = "Unknown";
             terrainType = 0;     
             
             Debug.DrawRay(playerController.gameObject.transform.position, playerController.gameObject.transform.TransformDirection(Vector3.down) * 100f, Color.green);
