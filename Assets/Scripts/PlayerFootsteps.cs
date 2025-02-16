@@ -52,7 +52,7 @@ void Update()
             {
                 terrainType = 1;
             }
-            if(hitLayer == "Stone")
+            else if(hitLayer == "Stone")
             {
                 terrainType = 2;
             }
