@@ -34,6 +34,8 @@ public class Torch : MonoBehaviour
         {
             ToggleTorch();
         }
+
+        TorchFlicker();
        
         if(!attributes.torchAllowed)
         {
@@ -50,20 +52,23 @@ public class Torch : MonoBehaviour
             torch.enabled = isOn;
         }
 
-        if (isOn)
+        /*if (isOn)
         {
-            //TorchFlicker();
+            TorchFlicker();
             Debug.Log("Torch on");
         }
         else if (!isOn)
         {
             Debug.Log("Torch off");
-        }
+        }*/
     }
 
     void TorchFlicker()
     {
         float flickerAmount = 0;
+
+        
+        //torch.enabled = true;
 
         if (attributes.currentBattery >= 40)
         {
@@ -72,12 +77,11 @@ public class Torch : MonoBehaviour
         }
         else if (attributes.currentBattery < 40)
         {
-            flickerAmount = Random.Range(torchIntensity / 2, 1f);
+            flickerAmount = Random.Range(torchIntensity / 2, 1f) * Time.deltaTime;
         }
-
+        
         torch.intensity = torchIntensity + flickerAmount;
-        isOn = !isOn;
-        torch.enabled = isOn;
+
 
         /*
         isOnFMODParameter = isOn ? 1f : 0f;
