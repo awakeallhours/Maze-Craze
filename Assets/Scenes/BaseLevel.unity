@@ -1758,7 +1758,7 @@ GameObject:
   - component: {fileID: 261054832}
   - component: {fileID: 261054831}
   m_Layer: 0
-  m_Name: InteractableCollider
+  m_Name: InteractableCollider(For pushing objects)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11050,7 +11050,6 @@ GameObject:
   - component: {fileID: 1849777344}
   - component: {fileID: 1849777343}
   - component: {fileID: 1849777346}
-  - component: {fileID: 1849777347}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Untagged
@@ -12040,6 +12039,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerGameObject: {fileID: 1904398245}
   footstepsDelayTime: 0.333
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  terrainType: 0
 --- !u!114 &1904398255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13123,7 +13126,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 410087041}
   - {fileID: 766089596}
-  - {fileID: 1745403284}
   - {fileID: 1779934333}
   - {fileID: 304128209}
   - {fileID: 1524855401}

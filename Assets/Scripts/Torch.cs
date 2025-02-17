@@ -4,12 +4,16 @@ using UnityEngine;
 public class Torch : MonoBehaviour
 {
     [SerializeField, Tooltip("Torch intesity default value is 3")] float torchIntensity; 
+    
     private PlayerAttributes attributes;
     Light torch;
-    StudioEventEmitter playerTorchToggleEventEmitter;
-    float isOnFMODParameter = 0f;
+    
     public bool isOn = false;
-
+    
+    //David additions
+    StudioEventEmitter playerTorchToggleEventEmitter;
+    
+    float isOnFMODParameter = 0f;
     float debugFMODParameter;
 
     void Start()
@@ -46,10 +50,14 @@ public class Torch : MonoBehaviour
             torch.enabled = isOn;
         }
 
-        if(isOn)
+        if (isOn)
         {
-            TorchFlicker();
-            Debug.Log("Flickering");
+            //TorchFlicker();
+            Debug.Log("Torch on");
+        }
+        else if (!isOn)
+        {
+            Debug.Log("Torch off");
         }
     }
 
@@ -71,6 +79,7 @@ public class Torch : MonoBehaviour
         isOn = !isOn;
         torch.enabled = isOn;
 
+        /*
         isOnFMODParameter = isOn ? 1f : 0f;
 
         Debug.Log("isOn: - " + isOn); 
@@ -81,5 +90,6 @@ public class Torch : MonoBehaviour
         
         playerTorchToggleEventEmitter.EventInstance.getParameterByName("isOn", out debugFMODParameter);
         Debug.Log("post FMOD - " + debugFMODParameter);
+        */
     }
 }

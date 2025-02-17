@@ -72,7 +72,7 @@ void Update()
 
         playerFootstepsEventEmitter.EventInstance.setParameterByName("terrainType", terrainType, false);
         playerFootstepsEventEmitter.EventInstance.getParameterByName("terrainType", out debugFMODParameter);
-        Debug.Log(debugFMODParameter);
+        //Debug.Log(debugFMODParameter);
     }
 
     void Start()
