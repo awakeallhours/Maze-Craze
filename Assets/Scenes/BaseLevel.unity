@@ -5374,12 +5374,12 @@ GameObject:
   - component: {fileID: 766089595}
   - component: {fileID: 766089594}
   - component: {fileID: 766089593}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Ground_Testing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &766089593
 BoxCollider:
@@ -11050,6 +11050,7 @@ GameObject:
   - component: {fileID: 1849777344}
   - component: {fileID: 1849777343}
   - component: {fileID: 1849777346}
+  - component: {fileID: 1849777347}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Untagged
@@ -12013,7 +12014,7 @@ MonoBehaviour:
       Data2: 1175068737
       Data3: 1013219237
       Data4: -1563487421
-    Path: event:/PlayerFootsteps
+    Path: event:/Player_Footsteps
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -13122,6 +13123,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 410087041}
   - {fileID: 766089596}
+  - {fileID: 1745403284}
   - {fileID: 1779934333}
   - {fileID: 304128209}
   - {fileID: 1524855401}
