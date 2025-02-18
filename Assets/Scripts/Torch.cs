@@ -1,47 +1,95 @@
-using FMOD;
-using FMODUnity;
+using Debug = UnityEngine.Debug;
+using FMOD.Studio;
 using UnityEngine;
 
 public class Torch : MonoBehaviour
 {
+    [SerializeField, Tooltip("Torch intensity default value is 3")] float torchIntensity; 
+    private PlayerAttributes attributes;
     Light torch;
-    StudioEventEmitter playerTorchToggleEventEmitter;
-    float isOnFMODParameter = 0f;
     public bool isOn = false;
+    
+    //FMOD audio
+    private float isOnFMODParameter;
+    private EventInstance playerTorchToggleEventInstance;
 
-    float debugFMODParameter;
 
     void Start()
     {
-        torch = GetComponent<Light>();  
+        torch = GetComponent<Light>();
         torch.enabled = false;
+        torch.intensity = torchIntensity;
 
-        //FMOD
-        playerTorchToggleEventEmitter = gameObject.GetComponent<StudioEventEmitter>();
+        attributes = GetComponentInParent<PlayerAttributes>();
     }
+
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) || !attributes.torchAllowed)
         {
             ToggleTorch();
         }
+
+        TorchFlicker();
+       
+        if(!attributes.torchAllowed)
+        {
+            isOn = false;
+            torch.enabled = false;
+        }
     }
+
 
     void ToggleTorch()
     {
-        isOn = !isOn;
-        torch.enabled = isOn;
+        if (attributes.torchAllowed)
+        {
+            isOn = !isOn;
+            torch.enabled = isOn;
+            TorchAudio();
+        }
 
-        isOnFMODParameter = isOn ? 1f : 0f;
+        /*if (isOn)
+        {
+            TorchFlicker();
+            Debug.Log("Torch on");
+        }
+        else if (!isOn)
+        {
+            Debug.Log("Torch off");
+        }*/
+    }
 
-        UnityEngine.Debug.Log("isOn: - " + isOn); 
-        UnityEngine.Debug.Log("pre FMOD - " + isOnFMODParameter);
 
-        playerTorchToggleEventEmitter.EventInstance.setParameterByName("isOn", isOnFMODParameter, false);
-        playerTorchToggleEventEmitter.Play();
+    void TorchFlicker()
+    {
+        float flickerAmount = 0;
+
         
-        playerTorchToggleEventEmitter.EventInstance.getParameterByName("isOn", out debugFMODParameter);
-        UnityEngine.Debug.Log("post FMOD - " + debugFMODParameter);
+        //torch.enabled = true;
+
+        if (attributes.currentBattery >= 40)
+        {
+            flickerAmount = Random.Range(-10f, 10f) * Time.deltaTime;
+        
+        }
+        else if (attributes.currentBattery < 40)
+        {
+            flickerAmount = Random.Range(torchIntensity / 2, 1f) * Time.deltaTime;
+        }
+        
+        torch.intensity = torchIntensity + flickerAmount;
+    }
+
+
+    void TorchAudio()
+    {
+        isOnFMODParameter = isOn ? 1f : 0f;
+        playerTorchToggleEventInstance = AudioManager.audioManagerInstance.CreateEventInstance(EventReferencesFMOD.eventReferencesFMODInstance.playerTorchToggle);
+        playerTorchToggleEventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+        playerTorchToggleEventInstance.setParameterByName("Player_Torch_Toggle.isOn", isOnFMODParameter);
+        playerTorchToggleEventInstance.start();
+        playerTorchToggleEventInstance.release();
     }
 }
