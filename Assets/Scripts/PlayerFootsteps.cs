@@ -12,20 +12,18 @@ private float currentSpeedMultiplier;
 private bool coroutineReset = true;
 [SerializeField, Tooltip("Used to determine what game layers the footsteps terrain type raycast should look for")] private LayerMask targetLayers;
 private string hitLayer;
+
 //FMOD audio
 private EventInstance playerFootstepsEventInstance;
-private bool allowNonRigidbodyVelocity = true; //FMOD will determine velocity data without the need for a rigidbody
-
 //this variable is used to determine the terrain material that is underneath the player
 //0 = unknown terrain, 1 = grass, 2 = stone
 public int terrainType = 0;
 
-private float debugFMODParameter;
 
 void Update()
 {
     IsPlayerMovingAndGrounded();
-    //FootstepsAudio();
+    FootstepsAudio();
 }
 
 
@@ -33,9 +31,7 @@ void FixedUpdate()
 {
     if (Physics.Raycast(playerGameObject.transform.position, Vector3.down, out RaycastHit hitInfo, 100f, targetLayers, QueryTriggerInteraction.Ignore))
     {
-        Debug.DrawRay(playerController.gameObject.transform.position, playerController.gameObject.transform.TransformDirection(Vector3.down) * hitInfo.distance, Color.red);
-        //Debug.Log(hitInfo.collider.gameObject.name + " was hit!");
-        //Debug.Log(hitInfo.collider.gameObject.layer);
+        //Debug.DrawRay(playerController.gameObject.transform.position, playerController.gameObject.transform.TransformDirection(Vector3.down) * hitInfo.distance, Color.red);
 
         hitLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
         if(hitLayer == "Grass")
@@ -56,13 +52,9 @@ void FixedUpdate()
         hitLayer = "Unknown";
         terrainType = 0;     
         
-        Debug.DrawRay(playerController.gameObject.transform.position, playerController.gameObject.transform.TransformDirection(Vector3.down) * 100f, Color.green);
-        //Debug.Log("No hit!");      
+        //Debug.DrawRay(playerController.gameObject.transform.position, playerController.gameObject.transform.TransformDirection(Vector3.down) * 100f, Color.green);   
     }
 
-    //playerFootstepsEventEmitter.EventInstance.setParameterByName("terrainType", terrainType, false);
-    //playerFootstepsEventEmitter.EventInstance.getParameterByName("terrainType", out debugFMODParameter);
-    //Debug.Log(debugFMODParameter);
 }
 
 
@@ -105,14 +97,14 @@ void FootstepsAudio()
         //get the reciprocal of the current speed multiplier so that as the multiplier increases the delay time gets smaller, 
         //divide this by the base speed multiplied by an arbitrary amount
         secondsBetweenFootsteps = 1 / currentSpeedMultiplier / (playerController.baseSpeed * 0.66f);
-        
+
         //FMOD audio
-        AudioManager.audioManagerInstance.CreateEventInstance(EventReferencesFMOD.eventReferencesFMODInstance.playerFootsteps);
+        playerFootstepsEventInstance = AudioManager.audioManagerInstance.CreateEventInstance(EventReferencesFMOD.eventReferencesFMODInstance.playerFootsteps);
+        playerFootstepsEventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+        playerFootstepsEventInstance.setParameterByName("Player_Footsteps.terrainType", terrainType);        
         playerFootstepsEventInstance.start();
         playerFootstepsEventInstance.release();
         StartCoroutine(FootstepsDelay());
-    }
-    AudioManager.audioManagerInstance.AttachInstanceToGameObject(playerFootstepsEventInstance, playerGameObject, allowNonRigidbodyVelocity);
-    playerFootstepsEventInstance.setParameterByName("terrainType", terrainType);
+    }    
 }
 }

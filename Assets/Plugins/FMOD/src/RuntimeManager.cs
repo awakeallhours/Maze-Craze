@@ -20,6 +20,8 @@ using UnityEngine.AddressableAssets;
 using UnityEditor;
 #endif
 
+//all 7 instances of "1e+18F" have been changed to "1e+17F" to supress an FMOD warning log that is caused by an FMOD bug
+
 namespace FMODUnity
 {
     [AddComponentMenu("")]
@@ -524,9 +526,9 @@ retry:
                     {
                         FMOD.ATTRIBUTES_3D attribs;
                         eventPositionWarnings[i].get3DAttributes(out attribs);
-                        if (attribs.position.x == 1e+18F &&
-                            attribs.position.y == 1e+18F &&
-                            attribs.position.z == 1e+18F)
+                        if (attribs.position.x == 1e+17F &&
+                            attribs.position.y == 1e+17F &&
+                            attribs.position.z == 1e+17F)
                         {
                             string path;
                             FMOD.Studio.EventDescription desc;
@@ -1219,8 +1221,8 @@ retry:
             eventDesc.is3D(out is3D);
             if (is3D)
             {
-                // Set position to 1e+18F, set3DAttributes should be called by the dev after this.
-                newInstance.set3DAttributes(RuntimeUtils.To3DAttributes(new Vector3(1e+18F, 1e+18F, 1e+18F)));
+                // Set position to 1e+17F, set3DAttributes should be called by the dev after this.
+                newInstance.set3DAttributes(RuntimeUtils.To3DAttributes(new Vector3(1e+17F, 1e+17F, 1e+17F)));
                 instance.eventPositionWarnings.Add(newInstance);
             }
             #endif

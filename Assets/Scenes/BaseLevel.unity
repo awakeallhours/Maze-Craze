@@ -12112,7 +12112,7 @@ MonoBehaviour:
   secondsBetweenFootsteps: 0.333
   targetLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   terrainType: 0
 --- !u!114 &1904398255
 MonoBehaviour:

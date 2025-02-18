@@ -5,17 +5,14 @@ using UnityEngine;
 public class Torch : MonoBehaviour
 {
     [SerializeField, Tooltip("Torch intensity default value is 3")] float torchIntensity; 
-    
     private PlayerAttributes attributes;
     Light torch;
-    
     public bool isOn = false;
     
     //FMOD audio
     private float isOnFMODParameter;
     private EventInstance playerTorchToggleEventInstance;
-    private GameObject torchGameObject;
-    private bool allowNonRigidbodyVelocity = true; //FMOD will determine velocity data without the need for a rigidbody
+
 
     void Start()
     {
@@ -24,10 +21,8 @@ public class Torch : MonoBehaviour
         torch.intensity = torchIntensity;
 
         attributes = GetComponentInParent<PlayerAttributes>();
-
-        //FMOD audio
-        torchGameObject = this.gameObject;
     }
+
 
     void Update()
     {
@@ -45,13 +40,14 @@ public class Torch : MonoBehaviour
         }
     }
 
+
     void ToggleTorch()
     {
         if (attributes.torchAllowed)
         {
             isOn = !isOn;
             torch.enabled = isOn;
-            //TorchAudio();
+            TorchAudio();
         }
 
         /*if (isOn)
@@ -64,6 +60,7 @@ public class Torch : MonoBehaviour
             Debug.Log("Torch off");
         }*/
     }
+
 
     void TorchFlicker()
     {
@@ -85,12 +82,13 @@ public class Torch : MonoBehaviour
         torch.intensity = torchIntensity + flickerAmount;
     }
 
+
     void TorchAudio()
     {
         isOnFMODParameter = isOn ? 1f : 0f;
         playerTorchToggleEventInstance = AudioManager.audioManagerInstance.CreateEventInstance(EventReferencesFMOD.eventReferencesFMODInstance.playerTorchToggle);
-        AudioManager.audioManagerInstance.AttachInstanceToGameObject(playerTorchToggleEventInstance, torchGameObject, allowNonRigidbodyVelocity);
-        playerTorchToggleEventInstance.setParameterByName("isOn", isOnFMODParameter);
+        playerTorchToggleEventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+        playerTorchToggleEventInstance.setParameterByName("Player_Torch_Toggle.isOn", isOnFMODParameter);
         playerTorchToggleEventInstance.start();
         playerTorchToggleEventInstance.release();
     }
