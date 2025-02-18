@@ -1,20 +1,21 @@
-using FMODUnity;
+using Debug = UnityEngine.Debug;
+using FMOD.Studio;
 using UnityEngine;
 
 public class Torch : MonoBehaviour
 {
-    [SerializeField, Tooltip("Torch intesity default value is 3")] float torchIntensity; 
+    [SerializeField, Tooltip("Torch intensity default value is 3")] float torchIntensity; 
     
     private PlayerAttributes attributes;
     Light torch;
     
     public bool isOn = false;
     
-    //David additions
-    StudioEventEmitter playerTorchToggleEventEmitter;
-    
-    float isOnFMODParameter = 0f;
-    float debugFMODParameter;
+    //FMOD audio
+    private float isOnFMODParameter;
+    private EventInstance playerTorchToggleEventInstance;
+    private GameObject torchGameObject;
+    private bool allowNonRigidbodyVelocity = true; //FMOD will determine velocity data without the need for a rigidbody
 
     void Start()
     {
@@ -24,8 +25,8 @@ public class Torch : MonoBehaviour
 
         attributes = GetComponentInParent<PlayerAttributes>();
 
-        //FMOD
-        playerTorchToggleEventEmitter = gameObject.GetComponent<StudioEventEmitter>();
+        //FMOD audio
+        torchGameObject = this.gameObject;
     }
 
     void Update()
@@ -50,6 +51,7 @@ public class Torch : MonoBehaviour
         {
             isOn = !isOn;
             torch.enabled = isOn;
+            //TorchAudio();
         }
 
         /*if (isOn)
@@ -81,19 +83,15 @@ public class Torch : MonoBehaviour
         }
         
         torch.intensity = torchIntensity + flickerAmount;
+    }
 
-
-        /*
+    void TorchAudio()
+    {
         isOnFMODParameter = isOn ? 1f : 0f;
-
-        Debug.Log("isOn: - " + isOn); 
-        Debug.Log("pre FMOD - " + isOnFMODParameter);
-
-        playerTorchToggleEventEmitter.EventInstance.setParameterByName("isOn", isOnFMODParameter, false);
-        playerTorchToggleEventEmitter.Play();
-        
-        playerTorchToggleEventEmitter.EventInstance.getParameterByName("isOn", out debugFMODParameter);
-        Debug.Log("post FMOD - " + debugFMODParameter);
-        */
+        playerTorchToggleEventInstance = AudioManager.audioManagerInstance.CreateEventInstance(EventReferencesFMOD.eventReferencesFMODInstance.playerTorchToggle);
+        AudioManager.audioManagerInstance.AttachInstanceToGameObject(playerTorchToggleEventInstance, torchGameObject, allowNonRigidbodyVelocity);
+        playerTorchToggleEventInstance.setParameterByName("isOn", isOnFMODParameter);
+        playerTorchToggleEventInstance.start();
+        playerTorchToggleEventInstance.release();
     }
 }
