@@ -44,8 +44,14 @@ public class PlayerAttributes : MonoBehaviour
    
     void Update()
     {
+        Health();
         Stamina();
         Torch();
+    }
+
+    void Health()
+    {
+        healthValue.text = Mathf.RoundToInt(currentHealth).ToString();
     }
 
     void Stamina()
@@ -117,6 +123,37 @@ public class PlayerAttributes : MonoBehaviour
             noStamina = false;
         }
     }
-    
+
+    public void IncreaseHealth(float healing)
+    {
+        if(currentHealth < maxHealth)
+        {
+            currentHealth += healing;
+
+            if(currentHealth > 100)
+            {
+                currentHealth = 100;
+            }
+        }
+    }
+
+    public void IncreaseBattery(float charge)
+    {
+        if (currentBattery < maxBattery)
+        {
+            currentBattery += charge;
+
+            if (currentBattery > 100)
+            {
+                currentBattery = 100;
+            }
+        }
+    }
+
+    public void DecreaseHealth(float damage)
+    {
+        currentHealth -= damage;
+    }
+
 
 }

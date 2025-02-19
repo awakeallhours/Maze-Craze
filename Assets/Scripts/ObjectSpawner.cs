@@ -7,7 +7,10 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField, Tooltip("Time until item respawns if at all")] float respawnTimer = 3f;
     [SerializeField, Tooltip("Will this item respawn")] bool respawnable;
     
+
     private GameObject itemInstance;
+
+   
     public float currentTimer;
 
     
@@ -33,14 +36,18 @@ public class ObjectSpawner : MonoBehaviour
                 SpawnObject();
             }
         }
+        
     }
 
     void Pickup()
     {
-        Destroy(itemInstance);
-        Debug.Log("pickup destroyed");
-        itemInstance = null;
-        
+        //Gets pickups component from item, ?. is short hand for a null check and avoids null reference error
+        Pickups pickup = itemInstance?.GetComponent<Pickups>();
+        if (pickup != null && pickup.validPickup)
+        {
+            itemInstance = null;
+        }
+
     }
 
     void SpawnObject()
@@ -54,17 +61,14 @@ public class ObjectSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")&& itemInstance != null)
         {
             Pickup();
-            Debug.Log("player inside pickup zone");
         }
     }
 
     void RespawnTimer()
     {
         currentTimer -= Time.deltaTime;
-        
-        
     }
 }
