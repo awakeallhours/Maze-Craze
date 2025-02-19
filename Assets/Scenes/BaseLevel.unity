@@ -681,12 +681,12 @@ GameObject:
   - component: {fileID: 52478982}
   - component: {fileID: 52478981}
   - component: {fileID: 52478980}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs_Flight2_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &52478980
 BoxCollider:
@@ -1695,12 +1695,12 @@ GameObject:
   - component: {fileID: 304128208}
   - component: {fileID: 304128207}
   - component: {fileID: 304128206}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &304128206
 BoxCollider:
@@ -1966,12 +1966,12 @@ GameObject:
   - component: {fileID: 363289342}
   - component: {fileID: 363289341}
   - component: {fileID: 363289340}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Strais_Landing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &363289339
 Transform:
@@ -2074,12 +2074,12 @@ GameObject:
   - component: {fileID: 388333306}
   - component: {fileID: 388333305}
   - component: {fileID: 388333304}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &388333303
 Transform:
@@ -2468,12 +2468,12 @@ GameObject:
   - component: {fileID: 432820482}
   - component: {fileID: 432820481}
   - component: {fileID: 432820480}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &432820479
 Transform:
@@ -3204,12 +3204,12 @@ GameObject:
   - component: {fileID: 570728591}
   - component: {fileID: 570728590}
   - component: {fileID: 570728589}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &570728588
 Transform:
@@ -4933,12 +4933,12 @@ GameObject:
   - component: {fileID: 696222908}
   - component: {fileID: 696222907}
   - component: {fileID: 696222906}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &696222905
 Transform:
@@ -5041,12 +5041,12 @@ GameObject:
   - component: {fileID: 722024919}
   - component: {fileID: 722024918}
   - component: {fileID: 722024917}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Ramp_Steep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &722024917
 BoxCollider:
@@ -6331,12 +6331,12 @@ GameObject:
   - component: {fileID: 1001720239}
   - component: {fileID: 1001720238}
   - component: {fileID: 1001720237}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1001720236
 Transform:
@@ -6774,12 +6774,12 @@ GameObject:
   - component: {fileID: 1170757300}
   - component: {fileID: 1170757299}
   - component: {fileID: 1170757298}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1170757297
 Transform:
@@ -6882,12 +6882,12 @@ GameObject:
   - component: {fileID: 1216482099}
   - component: {fileID: 1216482098}
   - component: {fileID: 1216482097}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1216482096
 Transform:
@@ -7979,12 +7979,12 @@ GameObject:
   - component: {fileID: 1392095982}
   - component: {fileID: 1392095981}
   - component: {fileID: 1392095980}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1392095979
 Transform:
@@ -8157,12 +8157,12 @@ GameObject:
   - component: {fileID: 1524855400}
   - component: {fileID: 1524855399}
   - component: {fileID: 1524855398}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: 'Stairs_Steep_Root '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &1524855398
 BoxCollider:
@@ -8405,12 +8405,12 @@ GameObject:
   - component: {fileID: 1554823172}
   - component: {fileID: 1554823171}
   - component: {fileID: 1554823170}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1554823169
 Transform:
@@ -9084,12 +9084,12 @@ GameObject:
   - component: {fileID: 1672916357}
   - component: {fileID: 1672916356}
   - component: {fileID: 1672916355}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Strais_Landing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1672916354
 Transform:
@@ -9504,12 +9504,12 @@ GameObject:
   - component: {fileID: 1719154225}
   - component: {fileID: 1719154224}
   - component: {fileID: 1719154223}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1719154222
 Transform:
@@ -9958,12 +9958,12 @@ GameObject:
   - component: {fileID: 1749986220}
   - component: {fileID: 1749986219}
   - component: {fileID: 1749986218}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1749986217
 Transform:
@@ -10066,12 +10066,12 @@ GameObject:
   - component: {fileID: 1779047569}
   - component: {fileID: 1779047568}
   - component: {fileID: 1779047567}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Ramp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &1779047567
 BoxCollider:
@@ -10174,12 +10174,12 @@ GameObject:
   - component: {fileID: 1779934332}
   - component: {fileID: 1779934331}
   - component: {fileID: 1779934330}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &1779934330
 BoxCollider:
@@ -10282,12 +10282,12 @@ GameObject:
   - component: {fileID: 1789903547}
   - component: {fileID: 1789903546}
   - component: {fileID: 1789903545}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: 'Stairs_Steep_Flight2_Root '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &1789903545
 BoxCollider:
@@ -10738,12 +10738,12 @@ GameObject:
   - component: {fileID: 1847042836}
   - component: {fileID: 1847042835}
   - component: {fileID: 1847042834}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1847042833
 Transform:
@@ -11553,12 +11553,12 @@ GameObject:
   - component: {fileID: 1898480206}
   - component: {fileID: 1898480205}
   - component: {fileID: 1898480204}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs_Flight2_Landing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1898480203
 Transform:
@@ -11807,6 +11807,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   terrainType: 0
+  isRunning: 0
 --- !u!114 &1904398255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13283,12 +13284,12 @@ GameObject:
   - component: {fileID: 2106456747}
   - component: {fileID: 2106456746}
   - component: {fileID: 2106456745}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Stairs_Flight2_Landing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2106456744
 Transform:
@@ -13396,7 +13397,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &2128652446
 BoxCollider:
@@ -13509,5 +13510,5 @@ SceneRoots:
   - {fileID: 783388954}
   - {fileID: 1797132144}
   - {fileID: 525960292}
-  - {fileID: 819157233}
   - {fileID: 1122875993}
+  - {fileID: 819157233}

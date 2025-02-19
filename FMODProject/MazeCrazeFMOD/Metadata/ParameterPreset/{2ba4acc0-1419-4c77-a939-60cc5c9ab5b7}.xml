@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{2ba4acc0-1419-4c77-a939-60cc5c9ab5b7}">
+		<property name="name">
+			<value>Player_Footsteps.isRunning</value>
+		</property>
+		<relationship name="folder">
+			<destination>{e8e1cbb2-b49f-4a36-afd2-02d62573dde2}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{42676ad2-40f0-495c-88d1-8ccb4fad0fb7}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{42676ad2-40f0-495c-88d1-8ccb4fad0fb7}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

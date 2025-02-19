@@ -18,12 +18,14 @@ private EventInstance playerFootstepsEventInstance;
 //this variable is used to determine the terrain material that is underneath the player
 //0 = unknown terrain, 1 = grass, 2 = stone
 public int terrainType = 0;
+public int isRunning = 0;
 
 
 void Update()
 {
     IsPlayerMovingAndGrounded();
     FootstepsAudio();
+    isRunning = playerController.isSprinting ? 1 : 0; // Convert bool to int for FMOD
 }
 
 
@@ -96,12 +98,13 @@ void FootstepsAudio()
 
         //get the reciprocal of the current speed multiplier so that as the multiplier increases the delay time gets smaller, 
         //divide this by the base speed multiplied by an arbitrary amount
-        secondsBetweenFootsteps = 1 / currentSpeedMultiplier / (playerController.baseSpeed * 0.66f);
+        secondsBetweenFootsteps = 1 / currentSpeedMultiplier / (playerController.baseSpeed * 0.5f);
 
         //FMOD audio
         playerFootstepsEventInstance = AudioManager.audioManagerInstance.CreateEventInstance(EventReferencesFMOD.eventReferencesFMODInstance.playerFootsteps);
         playerFootstepsEventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
-        playerFootstepsEventInstance.setParameterByName("Player_Footsteps.terrainType", terrainType);        
+        playerFootstepsEventInstance.setParameterByName("Player_Footsteps.terrainType", terrainType);
+        playerFootstepsEventInstance.setParameterByName("Player_Footsteps.isRunning", isRunning);      
         playerFootstepsEventInstance.start();
         playerFootstepsEventInstance.release();
         StartCoroutine(FootstepsDelay());
