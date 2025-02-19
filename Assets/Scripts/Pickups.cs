@@ -1,17 +1,24 @@
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
 
 public class Pickups : MonoBehaviour
 {
     [SerializeField, Tooltip("Amount of health/battery to restore")] float restore = 10f;
     [SerializeField, Tooltip("Speed of item rotation")] float rotationSpeed = 10f;
     [SerializeField, Tooltip("")] public bool validPickup;
+    //[SerializeField, Tooltip("Item ID if neccessary, currently used for keys")] public string itemID;
 
     private PlayerAttributes attributes;
+    private PlayerInventory inv;
+    private string item;
     void Start()
     {
         attributes = FindFirstObjectByType<PlayerAttributes>();
+        inv = FindAnyObjectByType<PlayerInventory>();
         validPickup = false;
+        item = gameObject.name;
     }
 
    
@@ -34,8 +41,7 @@ public class Pickups : MonoBehaviour
 
         if (gameObject.tag == "Key")
         {
-            Debug.Log("Key collected");
-            //need to make key logic
+            Key();
         }
     }
 
@@ -67,11 +73,24 @@ public class Pickups : MonoBehaviour
         }
     }
 
+    void Key()
+    {
+        validPickup = true;
+        Destroy(gameObject);
+
+        // if the key name is not null and the player does not already have it, add it to the player inventory 
+        if (item != null && !inv.HasItem(item))
+        {
+            inv.AddItem(item);
+        }
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log(gameObject.name);
+            
             CheckItem();
         }
     }

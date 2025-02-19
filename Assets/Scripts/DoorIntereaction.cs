@@ -1,19 +1,22 @@
 using System.Collections;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.InputSystem;
+
 
 public class DoorIntereaction : MonoBehaviour
 {
-    [SerializeField,Tooltip("Angle door should open to")] float openingAngle = 90;
-    [SerializeField,Tooltip("Door opening speed")] float openingSpeed = 1;
-
+    [SerializeField, Tooltip("Angle door should open to")] float openingAngle = 90;
+    [SerializeField, Tooltip("Door opening speed")] float openingSpeed = 1;
+    [SerializeField, Tooltip("Unique Door identifier for key system")] string doorID = "redDoor";
+    [SerializeField, Tooltip("Is the door locked")] public bool isLocked;
+    [SerializeField, Tooltip("Can the door ever be opened")] public bool inoperable = false;
     private Quaternion _closedRotation;
     private Quaternion _openRotation;
     private Coroutine _currentCoroutine;
 
     bool isOpen;
     public bool canOpen;
+    private PlayerInventory inv;
+    
 
     private void Start()
     {
@@ -22,7 +25,9 @@ public class DoorIntereaction : MonoBehaviour
 
         //sets door _openingRotation to new rotation
         _openRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, openingAngle, 0));
-        canOpen = false; 
+        canOpen = false;
+
+        inv = FindFirstObjectByType<PlayerInventory>();
     }
 
     private void Update()
@@ -50,7 +55,7 @@ public class DoorIntereaction : MonoBehaviour
 
     void OperateDoor()
     {
-        if (canOpen && Input.GetKeyDown(KeyCode.E))
+        if (canOpen && !isLocked && Input.GetKeyDown(KeyCode.E))
         {
             if (_currentCoroutine != null)
             {
@@ -59,13 +64,40 @@ public class DoorIntereaction : MonoBehaviour
             }
             _currentCoroutine = StartCoroutine(ToggleDoor());
         }
+
+        //Checks the players inventory for a door key if the door is locked and a key is needed
+        else if(isLocked && Input.GetKeyDown(KeyCode.E)&& canOpen)
+        {
+            if (inv.HasItem(doorID+"Key"))
+            {
+                UnlockDoor();
+                Debug.Log(doorID + " Door Unlocked");
+            }
+            else if(!inv.HasItem(doorID+"Key"))
+            {
+                Debug.Log("This door is locked you need " + doorID + "key.");
+            }
+        }
+        
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void LockDoor()
+    {
+        isLocked = true;
+    }
+
+    public void UnlockDoor()
+    {
+        isLocked = false;
+    }
+
+    
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.GetComponent<NoRbPlayerController>())
         {
-            Debug.Log("Player entered");
+            
             canOpen = true;
         }
     }
@@ -74,7 +106,7 @@ public class DoorIntereaction : MonoBehaviour
     {
         if (other.gameObject.GetComponent<NoRbPlayerController>())
         {
-            Debug.Log("Player exited");
+            
             canOpen = false;
         }
     }
