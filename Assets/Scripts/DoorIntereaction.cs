@@ -68,12 +68,13 @@ public class DoorIntereaction : MonoBehaviour
         //Checks the players inventory for a door key if the door is locked and a key is needed
         else if(isLocked && Input.GetKeyDown(KeyCode.E)&& canOpen)
         {
-            if (inv.HasItem(doorID+"Key"))
+            if (inv.HasKey(doorID+"Key"))
             {
                 UnlockDoor();
                 Debug.Log(doorID + " Door Unlocked");
+                inv.RemoveKey(doorID + "Key");
             }
-            else if(!inv.HasItem(doorID+"Key"))
+            else if(!inv.HasKey(doorID+"Key"))
             {
                 Debug.Log("This door is locked you need " + doorID + "key.");
             }

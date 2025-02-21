@@ -36,7 +36,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         //Gets pickups component from item, ?. is short hand for a null check and avoids null reference error
         Pickups pickup = itemInstance?.GetComponent<Pickups>();
-        if (pickup != null && pickup.validPickup)
+        if (pickup != null)
         {
             itemInstance = null;
         }

@@ -7,18 +7,18 @@ public class Pickups : MonoBehaviour
 {
     [SerializeField, Tooltip("Amount of health/battery to restore")] float restore = 10f;
     [SerializeField, Tooltip("Speed of item rotation")] float rotationSpeed = 10f;
-    [SerializeField, Tooltip("")] public bool validPickup;
+    [SerializeField, Tooltip("Sprite of the item")] Sprite itemSprite;
+    [SerializeField, Tooltip("Specify if the item is a key")] public bool isKey;
     //[SerializeField, Tooltip("Item ID if neccessary, currently used for keys")] public string itemID;
 
     private PlayerAttributes attributes;
     private PlayerInventory inv;
-    private string item;
+    private string itemID;
     void Start()
     {
         attributes = FindFirstObjectByType<PlayerAttributes>();
         inv = FindAnyObjectByType<PlayerInventory>();
-        validPickup = false;
-        item = gameObject.name;
+        itemID = gameObject.name;
     }
 
    
@@ -31,17 +31,20 @@ public class Pickups : MonoBehaviour
     {
         if(gameObject.tag == "Medpack")
         {
-            Heal();
+            AddToInventory();
+            //Heal();
         }
 
         if (gameObject.tag == "Battery")
         {
-            ChargeBattery();
+            AddToInventory();
+            //ChargeBattery();
         }
 
         if (gameObject.tag == "Key")
         {
-            Key();
+            AddToInventory();
+            //AddKey();
         }
     }
 
@@ -49,41 +52,40 @@ public class Pickups : MonoBehaviour
     {
         if(attributes.currentHealth < attributes.maxHealth)
         {
-            validPickup = true;
+            
             attributes.IncreaseHealth(restore);
             Destroy(gameObject);
         }
-        else
-        {
-            validPickup = false;
-        }
+       
     }
 
     void ChargeBattery()
     {
         if (attributes.currentBattery < attributes.maxBattery)
         {
-            validPickup = true;
+           
             attributes.IncreaseBattery(restore);
             Destroy(gameObject);
         }
-        else
-        {
-            validPickup = false;
-        }
+        
     }
 
-    void Key()
+    void AddKey()
     {
-        validPickup = true;
-        Destroy(gameObject);
-
         // if the key name is not null and the player does not already have it, add it to the player inventory 
-        if (item != null && !inv.HasItem(item))
+        if (itemID != null && !inv.HasKey(itemID))
         {
-            inv.AddItem(item);
+            inv.AddKey(itemID);
+            Destroy(gameObject);
         }
     }
+
+    void AddToInventory()
+    {
+        inv.AddItem(itemSprite);
+        Destroy(gameObject);
+    }
+
 
 
     private void OnTriggerEnter(Collider other)

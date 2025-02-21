@@ -1,25 +1,62 @@
 using UnityEngine;
 using System.Collections.Generic;
+using static UnityEditor.Progress;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField, Tooltip("")] List<string> inventory;
-    
+    /*[SerializeField, Tooltip("List of the items in the players inventory")] List<string> inventory = new List<string>();*/
+    [SerializeField, Tooltip("List of the items sprites in the players inventory")] private List<Sprite> itemSprites = new List<Sprite>();
+    [SerializeField, Tooltip("List of keys in the players inventory")] List<string> keys = new List<string>();
+    [SerializeField, Tooltip("Inventory bar script reference")]
+    private InventoryBar inventoryBar;
     
     void Start()
     {
+        inventoryBar = FindFirstObjectByType<InventoryBar>();
+
         //redDoorKey added for testing purposes
-        inventory.Add("redDoorKey");
+        keys.Add("redDoorKey");
+        inventoryBar.UpdateInventoryUI(itemSprites, keys);
     }
 
-    public void AddItem(string item)
+    private void Update()
     {
-        inventory.Add(item);
+        
     }
 
-
-    public bool HasItem(string itemID)
+    public void AddItem(Sprite itemSprite)
     {
-        return inventory.Contains(itemID);
+        if (!itemSprites.Contains(itemSprite))
+        {
+            itemSprites.Add(itemSprite);
+            inventoryBar.UpdateInventoryUI(itemSprites, keys);
+        }
     }
+
+    public void AddKey(string key)
+    {
+        if (!keys.Contains(key))
+        {
+            keys.Add(key);
+            inventoryBar.UpdateInventoryUI(itemSprites, keys);
+        }
+
+    }
+
+    public bool HasKey(string keyID)
+    {
+        return keys.Contains(keyID);
+    }
+
+    public void RemoveKey(string keyID)
+    {
+        if (keys.Contains(keyID))
+        {
+            keys.Remove(keyID);
+            inventoryBar.UpdateInventoryUI(itemSprites, keys);
+        }
+        
+    }
+
+    
 }

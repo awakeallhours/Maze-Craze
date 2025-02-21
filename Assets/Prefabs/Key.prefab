@@ -52,7 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restore: 10
   rotationSpeed: 50
-  validPickup: 1
+  itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  isKey: 1
 --- !u!65 &6187793714446118107
 BoxCollider:
   m_ObjectHideFlags: 0
