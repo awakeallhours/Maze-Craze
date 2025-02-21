@@ -28,19 +28,19 @@ public class Pickups : MonoBehaviour
 
     void CheckItem()
     {
-        if(gameObject.tag == "Medpack")
+        if (gameObject.tag == "Pickup")
         {
             AddToInventory();
-            //Heal();
         }
-
-        if (gameObject.tag == "Battery")
+        else if (gameObject.tag == "Medpack" || gameObject.tag == "Pickup")
         {
             AddToInventory();
-            //ChargeBattery();
         }
-
-        if (gameObject.tag == "Key")
+        else if (gameObject.tag == "Battery")
+        {
+            AddToInventory();
+        }
+        else if (gameObject.tag == "Key")
         {
             AddKey();
         }

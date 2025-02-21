@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5467658546741598791}
   - component: {fileID: 8577320278364436112}
   m_Layer: 0
-  m_Name: Cylinder (1)
+  m_Name: SecondBat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8709368707946952249}
-  m_Father: {fileID: 7816668400097331538}
+  m_Father: {fileID: 2588062032724242818}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5467658546741598791
 MeshFilter:
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5881599338849085867}
   - component: {fileID: 5776497117291736263}
   m_Layer: 0
-  m_Name: Cylinder (2)
+  m_Name: SecondTerminal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,7 +205,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2588062032724242818}
-  - {fileID: 5643509535700959930}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7960580646340736045
@@ -257,7 +256,7 @@ GameObject:
   - component: {fileID: 3792146157967544505}
   - component: {fileID: 4340698499181042797}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: FirstBat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,6 +276,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5323635504404347504}
+  - {fileID: 5643509535700959930}
   m_Father: {fileID: 7816668400097331538}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3792146157967544505
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 6200457221213190141}
   - component: {fileID: 43574519777495698}
   m_Layer: 0
-  m_Name: Cylinder (2)
+  m_Name: FirstTerminal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,6 +8,7 @@ TagManager:
   - Medpack
   - Battery
   - Key
+  - Pickup
   layers:
   - Default
   - TransparentFX

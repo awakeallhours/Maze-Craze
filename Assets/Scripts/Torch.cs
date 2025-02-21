@@ -50,7 +50,7 @@ public class Torch : MonoBehaviour
             TorchAudio();
         }
 
-        /*if (isOn)
+        if (isOn)
         {
             TorchFlicker();
             Debug.Log("Torch on");
@@ -58,7 +58,7 @@ public class Torch : MonoBehaviour
         else if (!isOn)
         {
             Debug.Log("Torch off");
-        }*/
+        }
     }
 
 
