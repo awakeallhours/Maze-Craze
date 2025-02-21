@@ -18,8 +18,6 @@ public class PlayerAttributes : MonoBehaviour
     [SerializeField, Tooltip("Stamina value")] TextMeshProUGUI staminaValue;
     [SerializeField, Tooltip("Battery value")] TextMeshProUGUI batteryValue;
     
-
-
     NoRbPlayerController controller;
     Torch torch;
 
@@ -56,7 +54,6 @@ public class PlayerAttributes : MonoBehaviour
 
     void Stamina()
     {
-        
         staminaValue.text = Mathf.RoundToInt(currentStamina).ToString();
         
         if(currentStamina > 0)
@@ -101,12 +98,6 @@ public class PlayerAttributes : MonoBehaviour
 
 
         }
-        //Add function to recover battery
-        /*else if()
-        {
-            currentStamina += staminaDrain * Time.deltaTime;
-
-        }*/
     }
 
     void StaminaDelay()

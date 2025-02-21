@@ -9,7 +9,6 @@ public class Pickups : MonoBehaviour
     [SerializeField, Tooltip("Speed of item rotation")] float rotationSpeed = 10f;
     [SerializeField, Tooltip("Sprite of the item")] Sprite itemSprite;
     [SerializeField, Tooltip("Specify if the item is a key")] public bool isKey;
-    //[SerializeField, Tooltip("Item ID if neccessary, currently used for keys")] public string itemID;
 
     private PlayerAttributes attributes;
     private PlayerInventory inv;
@@ -44,7 +43,6 @@ public class Pickups : MonoBehaviour
         if (gameObject.tag == "Key")
         {
             AddKey();
-            //AddKey();
         }
     }
 
@@ -52,22 +50,18 @@ public class Pickups : MonoBehaviour
     {
         if(attributes.currentHealth < attributes.maxHealth)
         {
-            
             attributes.IncreaseHealth(restore);
             Destroy(gameObject);
         }
-       
     }
 
     void ChargeBattery()
     {
         if (attributes.currentBattery < attributes.maxBattery)
         {
-           
             attributes.IncreaseBattery(restore);
             Destroy(gameObject);
         }
-        
     }
 
     void AddKey()
@@ -85,8 +79,6 @@ public class Pickups : MonoBehaviour
         inv.AddItem(itemSprite);
         Destroy(gameObject);
     }
-
-
 
     private void OnTriggerEnter(Collider other)
     {

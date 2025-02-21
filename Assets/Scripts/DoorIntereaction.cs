@@ -35,8 +35,6 @@ public class DoorIntereaction : MonoBehaviour
         OperateDoor();
     }
 
-
-
     IEnumerator ToggleDoor()
     {
         //checks state of door and toggles between states
@@ -45,12 +43,12 @@ public class DoorIntereaction : MonoBehaviour
 
         //operates door smoothly
         while(Quaternion.Angle(transform.rotation, targetRotation) > 0.01f)
-            {
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * openingSpeed);
-                    yield return null;
-            }
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * openingSpeed);
+                yield return null;
+        }
 
-            transform.rotation = targetRotation;
+        transform.rotation = targetRotation;
     }
 
     void OperateDoor()
@@ -79,7 +77,6 @@ public class DoorIntereaction : MonoBehaviour
                 Debug.Log("This door is locked you need " + doorID + "key.");
             }
         }
-        
     }
 
     public void LockDoor()
@@ -91,9 +88,7 @@ public class DoorIntereaction : MonoBehaviour
     {
         isLocked = false;
     }
-
     
-
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.GetComponent<NoRbPlayerController>())

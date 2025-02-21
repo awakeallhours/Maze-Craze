@@ -29,7 +29,6 @@ public class ObjectSpawner : MonoBehaviour
                 SpawnObject();
             }
         }
-        
     }
 
     void Pickup()
@@ -40,7 +39,6 @@ public class ObjectSpawner : MonoBehaviour
         {
             itemInstance = null;
         }
-
     }
 
     void SpawnObject()
