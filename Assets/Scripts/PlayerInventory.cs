@@ -8,12 +8,13 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField, Tooltip("List of the items sprites in the players inventory")] private List<Sprite> itemSprites = new List<Sprite>();
     [SerializeField, Tooltip("List of keys in the players inventory")] List<string> keys = new List<string>();
     [SerializeField, Tooltip("Inventory bar script reference")]
-    private InventoryBar inventoryBar;
     
+    private InventoryBar inventoryBar;
+    private Pickups pickup;
     void Start()
     {
         inventoryBar = FindFirstObjectByType<InventoryBar>();
-
+        pickup = FindFirstObjectByType<Pickups>();
         //redDoorKey added for testing purposes
         keys.Add("redDoorKey");
         inventoryBar.UpdateInventoryUI(itemSprites, keys);

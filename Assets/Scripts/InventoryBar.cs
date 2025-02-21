@@ -1,14 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryBar : MonoBehaviour
 {
     [SerializeField, Tooltip("How long will the inventory ribbon be visible for")] float visibilityTime = 3f;
     [SerializeField, Tooltip("Panel game object to be attached")] GameObject panel;
     [SerializeField, Tooltip("Inventory slot image UI elements")] private List<Image> inventorySlotImages = new List<Image>();
-    [SerializeField, Tooltip("Text input field for collected keys")] private InputField keysTextField;
+    [SerializeField, Tooltip("Text input field for collected keys")] private TextMeshProUGUI keysText;
     [SerializeField, Tooltip("Placeholder sprites for empty slots")] private Sprite emptySlotSprite;
+
+    
     
     
     private PlayerInventory inv;
@@ -58,7 +61,7 @@ public class InventoryBar : MonoBehaviour
 
         //update the keys text field
         {
-            //keysTextField.text = string.Join(", ", keys);
+            keysText.text = string.Join("\n", keys);
         }
     }
 

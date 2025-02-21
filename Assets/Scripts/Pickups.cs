@@ -43,7 +43,7 @@ public class Pickups : MonoBehaviour
 
         if (gameObject.tag == "Key")
         {
-            AddToInventory();
+            AddKey();
             //AddKey();
         }
     }
