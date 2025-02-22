@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DoorIntereaction : MonoBehaviour
 {
+    //DoorKeys are related to Player Inventory
+
     [SerializeField, Tooltip("Angle door should open to")] float openingAngle = 90;
     [SerializeField, Tooltip("Door opening speed")] float openingSpeed = 1;
     [SerializeField, Tooltip("Unique Door identifier for key system")] string doorID = "redDoor";

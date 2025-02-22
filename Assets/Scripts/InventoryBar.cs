@@ -5,15 +5,14 @@ using TMPro;
 
 public class InventoryBar : MonoBehaviour
 {
+    /*The 3 inventory type scripts depend on eachother InventoryBar, Pickups and PlayerInventory if something changes in 1 check the others*/
+
     [SerializeField, Tooltip("How long will the inventory ribbon be visible for")] float visibilityTime = 3f;
     [SerializeField, Tooltip("Panel game object to be attached")] GameObject panel;
     [SerializeField, Tooltip("Inventory slot image UI elements")] private List<Image> inventorySlotImages = new List<Image>();
     [SerializeField, Tooltip("Text input field for collected keys")] private TextMeshProUGUI keysText;
     [SerializeField, Tooltip("Placeholder sprites for empty slots")] private Sprite emptySlotSprite;
 
-    
-    
-    
     private PlayerInventory inv;
     public bool showPanel = false;
     public float currentTimer;

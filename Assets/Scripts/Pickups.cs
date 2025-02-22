@@ -5,6 +5,8 @@ using UnityEditor.Rendering;
 
 public class Pickups : MonoBehaviour
 {
+    /*The 3 inventory type scripts depend on eachother InventoryBar, Pickups and PlayerInventory if something changes in 1 check the others*/
+
     [SerializeField, Tooltip("Amount of health/battery to restore")] float restore = 10f;
     [SerializeField, Tooltip("Speed of item rotation")] float rotationSpeed = 10f;
     [SerializeField, Tooltip("Sprite of the item")] Sprite itemSprite;
@@ -46,21 +48,21 @@ public class Pickups : MonoBehaviour
         }
     }
 
-    void Heal()
+    public void Heal()
     {
         if(attributes.currentHealth < attributes.maxHealth)
         {
             attributes.IncreaseHealth(restore);
-            Destroy(gameObject);
+            
         }
     }
 
-    void ChargeBattery()
+    public void ChargeBattery()
     {
         if (attributes.currentBattery < attributes.maxBattery)
         {
             attributes.IncreaseBattery(restore);
-            Destroy(gameObject);
+           
         }
     }
 
