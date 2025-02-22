@@ -62,6 +62,11 @@ void FixedUpdate()
 
 void Start()
 {
+    if (playerGameObject == null)
+    {
+        Debug.LogError(GetType().Name + ".cs - No player gameObject assigned in the inspector!");
+    }
+
     playerController = playerGameObject.GetComponent<NoRbPlayerController>();
 }
 
