@@ -115,7 +115,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{5e38cdcb-05f5-4c02-bc3c-77550c42f685}">
 		<property name="name">
-			<value>ClickOff</value>
+			<value>Click Off</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{be829a9d-0023-46e1-b319-4bddd3bd47f2}</destination>
@@ -137,7 +137,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{19e2b0c8-90bb-4f4e-8ed0-7c9f38ed35c0}">
 		<property name="name">
-			<value>ClickOn</value>
+			<value>Click On</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{587355ef-5332-430c-acad-b3b643aad10d}</destination>

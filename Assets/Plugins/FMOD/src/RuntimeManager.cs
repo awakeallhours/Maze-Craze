@@ -20,8 +20,6 @@ using UnityEngine.AddressableAssets;
 using UnityEditor;
 #endif
 
-//all 7 instances of "1e+18F" have been changed to "1e+17F" to supress an FMOD warning log that is caused by an FMOD bug
-
 namespace FMODUnity
 {
     [AddComponentMenu("")]
@@ -1365,18 +1363,6 @@ retry:
                 Instance.studioSystem.setListenerAttributes(listenerIndex, RuntimeUtils.To3DAttributes(gameObject.transform, rigidBody));
             }
         }
-
-        public static void SetListenerLocation(int listenerIndex, GameObject gameObject, GameObject attenuationObject = null, Vector3 velocity = new Vector3())
-        {
-            if (attenuationObject)
-            {
-                Instance.studioSystem.setListenerAttributes(listenerIndex, RuntimeUtils.To3DAttributes(gameObject.transform, velocity), RuntimeUtils.ToFMODVector(attenuationObject.transform.position));
-            }
-            else
-            {
-                Instance.studioSystem.setListenerAttributes(listenerIndex, RuntimeUtils.To3DAttributes(gameObject.transform, velocity));
-            }
-        }
 #endif
 
 #if UNITY_PHYSICS2D_EXIST
@@ -1397,6 +1383,18 @@ retry:
             }
         }
 #endif
+
+        public static void SetListenerLocation(int listenerIndex, GameObject gameObject, GameObject attenuationObject = null, Vector3 velocity = new Vector3())
+        {
+            if (attenuationObject)
+            {
+                Instance.studioSystem.setListenerAttributes(listenerIndex, RuntimeUtils.To3DAttributes(gameObject.transform, velocity), RuntimeUtils.ToFMODVector(attenuationObject.transform.position));
+            }
+            else
+            {
+                Instance.studioSystem.setListenerAttributes(listenerIndex, RuntimeUtils.To3DAttributes(gameObject.transform, velocity));
+            }
+        }
 
         public static void SetListenerLocation(GameObject gameObject, GameObject attenuationObject = null)
         {
