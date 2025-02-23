@@ -11,8 +11,10 @@ public class InventoryBar : MonoBehaviour
     [SerializeField, Tooltip("Panel game object to be attached")] GameObject panel;
     [SerializeField, Tooltip("Inventory slot image UI elements")] private List<Image> inventorySlotImages = new List<Image>();
     [SerializeField, Tooltip("Text input field for collected keys")] private TextMeshProUGUI keysText;
+    [SerializeField, Tooltip("Text input field for collected keys")] private TextMeshProUGUI compassText;
     [SerializeField, Tooltip("Placeholder sprites for empty slots")] private Sprite emptySlotSprite;
 
+    private Compass compass;
     private PlayerInventory inv;
     public bool showPanel = false;
     public float currentTimer;
@@ -22,6 +24,7 @@ public class InventoryBar : MonoBehaviour
         panel.SetActive(false);
         currentTimer = visibilityTime;
         inv = FindFirstObjectByType<PlayerInventory>();
+        compass = FindFirstObjectByType<Compass>();
     }
 
     
@@ -41,6 +44,8 @@ public class InventoryBar : MonoBehaviour
         {
             HideInventory();
         }
+
+        compassText.text = compass.compassHeadingNumber.ToString();
 
     }
 
