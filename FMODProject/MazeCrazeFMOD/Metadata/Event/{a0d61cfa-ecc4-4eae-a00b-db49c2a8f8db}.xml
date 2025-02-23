@@ -5,7 +5,7 @@
 			<value>Environment_Door_Locked</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{275c88fc-3614-4db1-b83d-994f6f577a40}</destination>
@@ -98,6 +98,7 @@
 	<object class="MixerBusEffectChain" id="{a292171d-f826-4835-a862-d259e5d52d56}">
 		<relationship name="effects">
 			<destination>{bd363482-b0ef-47e7-b1eb-2b2f5d2e3ce4}</destination>
+			<destination>{38db053d-7069-4f85-b286-36c6dc2eb99c}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{eecead2c-fae8-4f55-b0d5-89afb93ef95e}" />
@@ -109,5 +110,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{dadd60e9-9c93-44bf-b685-a68df59838dd}" />
 	<object class="MixerBusFader" id="{bd363482-b0ef-47e7-b1eb-2b2f5d2e3ce4}" />
+	<object class="SpatialiserEffect" id="{38db053d-7069-4f85-b286-36c6dc2eb99c}" />
 	<object class="MixerBusFader" id="{45e511d5-72e1-4781-9111-591d9f80d09c}" />
 </objects>

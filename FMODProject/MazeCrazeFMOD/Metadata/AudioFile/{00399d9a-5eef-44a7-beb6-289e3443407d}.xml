@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{00399d9a-5eef-44a7-beb6-289e3443407d}">
+		<property name="assetPath">
+			<value>Player_Land_Unknown/Footsteps_Tile_Jump_Land_01.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.73550000000000004</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{0ebf0726-4e66-466a-a0f1-1dd2e24a4fd9}</destination>
+		</relationship>
+	</object>
+</objects>

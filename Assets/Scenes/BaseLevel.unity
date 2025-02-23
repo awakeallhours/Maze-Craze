@@ -1700,6 +1700,20 @@ MonoBehaviour:
       Data3: -549312833
       Data4: -1685844225
     Path: event:/Player_Torch_Toggle
+  <playerJump>k__BackingField:
+    Guid:
+      Data1: -263451252
+      Data2: 1247671925
+      Data3: 597652132
+      Data4: 2075692941
+    Path: event:/Player_Jump
+  <playerLand>k__BackingField:
+    Guid:
+      Data1: -157878546
+      Data2: 1077227850
+      Data3: -2036545134
+      Data4: 1079322924
+    Path: event:/Player_Land
 --- !u!1 &261054829
 GameObject:
   m_ObjectHideFlags: 0

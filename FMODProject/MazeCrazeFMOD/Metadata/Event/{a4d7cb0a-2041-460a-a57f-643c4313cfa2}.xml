@@ -114,7 +114,11 @@
 			<destination>{06f0f557-92e4-4da6-b89d-9375a58af4f1}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{375a3951-01dd-402d-a244-fbfd9cdd7087}" />
+	<object class="Timeline" id="{375a3951-01dd-402d-a244-fbfd9cdd7087}">
+		<property name="isProxyEnabled">
+			<value>false</value>
+		</property>
+	</object>
 	<object class="ParameterProxy" id="{88ef14ae-2a3f-47f2-b863-60e566ea6219}">
 		<relationship name="modules">
 			<destination>{b8d45785-3c3c-4564-b5a7-9d36e7badc4c}</destination>
@@ -219,6 +223,9 @@
 		<property name="start">
 			<value>1</value>
 		</property>
+		<property name="volume">
+			<value>-5</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{a2700ae0-7e3b-40d5-a88b-d2c8e059261a}</destination>
 			<destination>{7e65cc4f-971d-4db5-abed-9691ed4c4899}</destination>
@@ -280,9 +287,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{9294c470-1b19-494c-8bda-eeb0bc305f9d}">
-		<property name="volume">
-			<value>-5</value>
-		</property>
 		<property name="name">
 			<value>Grass Terrain (Walking)</value>
 		</property>
@@ -299,6 +303,9 @@
 	<object class="MultiSound" id="{0bfc5f52-af85-4036-b76a-718b77a08ab3}">
 		<property name="start">
 			<value>1</value>
+		</property>
+		<property name="volume">
+			<value>-2</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{e23dc2b6-24e4-4bdd-8175-6e50dfb55e80}</destination>
@@ -326,9 +333,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{5796e475-6edc-491d-be45-b19ead58213e}">
-		<property name="volume">
-			<value>-2</value>
-		</property>
 		<property name="name">
 			<value>Grass Terrain (Running)</value>
 		</property>
@@ -345,6 +349,9 @@
 	<object class="MultiSound" id="{7d6a56c5-b813-47f3-a404-670a2cdd47c7}">
 		<property name="start">
 			<value>2</value>
+		</property>
+		<property name="volume">
+			<value>-2</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{c1a08ba8-fbc8-4293-b9a5-1b76e9a2f4c0}</destination>
@@ -366,9 +373,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{75a907c5-65c8-4864-926f-daaa07affad3}">
-		<property name="volume">
-			<value>-2</value>
-		</property>
 		<property name="name">
 			<value>Stone Terrain (Walking)</value>
 		</property>
@@ -385,6 +389,9 @@
 	<object class="MultiSound" id="{592a77d4-88ce-43ac-8e6f-30a0681386a2}">
 		<property name="start">
 			<value>2</value>
+		</property>
+		<property name="volume">
+			<value>-2</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{2c7f7ef1-6903-4e1d-9fb6-9a6ac41c5728}</destination>
@@ -407,9 +414,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{06f0f557-92e4-4da6-b89d-9375a58af4f1}">
-		<property name="volume">
-			<value>-2</value>
-		</property>
 		<property name="name">
 			<value>Stone Terrain (Running)</value>
 		</property>
