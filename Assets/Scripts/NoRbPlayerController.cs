@@ -29,7 +29,7 @@ public class NoRbPlayerController : MonoBehaviour
 
     private CharacterController controller;
     private PlayerAttributes attributes;
-    private Vector3 velocity;
+    public Vector3 velocity;
     
 
     void Start()

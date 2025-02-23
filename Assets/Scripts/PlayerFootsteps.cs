@@ -12,7 +12,8 @@ public class PlayerFootsteps : MonoBehaviour
     private bool coroutineReset = true;
     [SerializeField, Tooltip("Used to determine what game layers the footsteps terrain type raycast should look for")] private LayerMask targetLayers;
     private string hitLayer;
-    public bool hasJumped;
+    private bool triggerPlayerJumpAudioEvent;
+    private bool triggerPlayerLandAudioEvent;
 
     //FMOD audio
     private EventInstance playerFootstepsEventInstance;
@@ -71,7 +72,8 @@ public class PlayerFootsteps : MonoBehaviour
         }
 
         playerController = playerGameObject.GetComponent<NoRbPlayerController>();
-        hasJumped = false;
+        triggerPlayerJumpAudioEvent = true;
+        triggerPlayerLandAudioEvent = true;
     }
 
 
@@ -112,7 +114,7 @@ public class PlayerFootsteps : MonoBehaviour
 
     void PlayerJumpAudio()
     {
-        if (playerController.isJumping && !hasJumped)
+        if (playerController.isJumping && triggerPlayerJumpAudioEvent)
         {
             //player jump audio event
             playerJumpEventInstance = AudioManager.audioManagerInstance.CreateEventInstance(EventReferencesFMOD.eventReferencesFMODInstance.playerJump);
@@ -122,24 +124,30 @@ public class PlayerFootsteps : MonoBehaviour
             playerJumpEventInstance.start();
             playerJumpEventInstance.release();
 
-            hasJumped = true;
+            triggerPlayerJumpAudioEvent = false;
         }
     }
 
 
     void PlayerLandAudio()
     {
-        if (playerController.isGrounded && hasJumped)
+        if (playerController.velocity.y < -2)
+        {
+            triggerPlayerLandAudioEvent = true;
+        }
+
+        if (playerController.isGrounded && triggerPlayerLandAudioEvent)
         {
             //player land audio event
-            playerJumpEventInstance = AudioManager.audioManagerInstance.CreateEventInstance(EventReferencesFMOD.eventReferencesFMODInstance.playerLand);
-            playerJumpEventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
-            playerJumpEventInstance.setParameterByName("Player_Footsteps.terrainType", terrainType);
-            playerJumpEventInstance.setParameterByName("Player_Footsteps.isRunning", isRunning);      
-            playerJumpEventInstance.start();
-            playerJumpEventInstance.release();
+            playerLandEventInstance = AudioManager.audioManagerInstance.CreateEventInstance(EventReferencesFMOD.eventReferencesFMODInstance.playerLand);
+            playerLandEventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+            playerLandEventInstance.setParameterByName("Player_Footsteps.terrainType", terrainType);
+            playerLandEventInstance.setParameterByName("Player_Footsteps.isRunning", isRunning);      
+            playerLandEventInstance.start();
+            playerLandEventInstance.release();
 
-            hasJumped = false;
+            triggerPlayerJumpAudioEvent = true; //reset triggerPlayerJumpAudioEvent bool once landed
+            triggerPlayerLandAudioEvent = false;
         }
     }
 }
