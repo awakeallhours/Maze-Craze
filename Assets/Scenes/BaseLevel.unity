@@ -2071,6 +2071,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 500
+  bobAmount: 0.08
+  bobSpeed: 15
   playerPrefab: {fileID: 1904398249}
 --- !u!114 &330585549
 MonoBehaviour:
