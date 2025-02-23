@@ -4,6 +4,9 @@ using TMPro;
 
 public class MouseLook : MonoBehaviour
 {
+    //todo: player height seems to have been affected by the intialLocalPosition
+    //todo: fix crouch
+
     [SerializeField, Tooltip("Mouse sensitivity")] float mouseSensitivity = 100f;
     [SerializeField, Tooltip("Head bob amount")] float bobAmount = 0f;
     [SerializeField, Tooltip("Head bob speed")] float bobSpeed = 0f;
