@@ -88,10 +88,12 @@ public class NoRbPlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl) && !isCrouching)
         {
             isCrouching = true;
+            controller.height /= 2;
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouching)
         {
             isCrouching = false;
+            controller.height *= 2;
         }
 
         if (!float.IsNaN(velocity.y) && !float.IsInfinity(velocity.y))

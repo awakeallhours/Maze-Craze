@@ -68,21 +68,32 @@ public class MouseLook : MonoBehaviour
         Vector3 targetPosition;
         if (controller.isCrouching)
         {
-            targetPosition = new Vector3(transform.position.x, controller.crouchHeight, transform.position.z);
+            targetPosition = new Vector3(initialLocalPosition.x, controller.crouchHeight, initialLocalPosition.z);
         }
         else
         {
-            targetPosition = new Vector3(transform.position.x, controller.transform.position.y, transform.position.z);
+            targetPosition = new Vector3(initialLocalPosition.x, controller.transform.position.y, initialLocalPosition.z);
         }
 
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 10f);
+        transform.position = Vector3.Lerp(transform.localPosition, targetPosition, Time.deltaTime * 10f);
     }
 
     void Headbob()
     {
-        if (controller.isMoving)
+        //trying to adjust bobspeed for crouch
+
+        float bobFactor;
+        float currentBobSpeed = bobSpeed;
+        if (controller.isMoving )
         {
-            float bobFactor = Mathf.Sin(Time.time * bobSpeed) * bobAmount;
+            bobFactor = Mathf.Sin(Time.time *currentBobSpeed) * bobAmount;
+            Vector3 bobOffset = new Vector3(0f, bobFactor, 0f);
+            transform.localPosition = initialLocalPosition + bobOffset;
+        }
+        else if (controller.isMoving && controller.isCrouching)
+        {
+           
+            bobFactor = Mathf.Sin(Time.time * currentBobSpeed * 0.5f) * bobAmount;
             Vector3 bobOffset = new Vector3(0f, bobFactor, 0f);
             transform.localPosition = initialLocalPosition + bobOffset;
         }
@@ -91,5 +102,7 @@ public class MouseLook : MonoBehaviour
             // Reset to player's y position if not moving
             transform.localPosition = initialLocalPosition;
         }
+
+
     }
 }
