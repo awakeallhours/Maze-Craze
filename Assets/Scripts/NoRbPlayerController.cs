@@ -12,7 +12,8 @@ public class NoRbPlayerController : MonoBehaviour
     //player position logs
     private Vector3 playerPos;
     private Vector3 lastPlayerPos;
-    
+
+    [SerializeField, Tooltip("Player Character prefab")] GameObject playerPrefab;
     [SerializeField, Tooltip("Crouch height divisor, default is 2. Which sets crouch to half of the player height")] public float crouchHeight = 2f;
     [SerializeField, Tooltip("Player jump height")] float jumpHeight = 1f;
     [SerializeField, Tooltip("The base movement speed for the player")] public float baseSpeed = 5f;
@@ -65,45 +66,32 @@ public class NoRbPlayerController : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(move * currentSpeed * Time.deltaTime);
-        currentSpeed = baseSpeed;
-
-        if (Input.GetKey(KeyCode.LeftShift)&& !attributes.noStamina)
-        {
-            currentSpeed *= 2;
-
-            if (attributes.noStamina)
-            {
-                currentSpeed *= 1;
-            }
-        }
-        else
-        {
-            isSprinting = false;
-        }
+        
+        UpdateSpeed();
+        
+        #region *** Jump ***
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
+
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             isJumping = true;
-            
+
         }
 
+        #endregion
+
+
+        
+
+        //new
         if (Input.GetKeyDown(KeyCode.LeftControl) && !isCrouching)
         {
-            controller.height = crouchHeight;
-            controller.center = new Vector3(controller.center.x, controller.center.y - (playerHeight - crouchHeight) / 2, controller.center.z);
             isCrouching = true;
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouching)
         {
-            controller.height = playerHeight;
-            controller.center = new Vector3(controller.center.x, controller.center.y + (playerHeight - crouchHeight) / 2, controller.center.z);
             isCrouching = false;
-        }
-
-        if (isCrouching)
-        {
-            currentSpeed /= 2;
         }
 
         if (!float.IsNaN(velocity.y) && !float.IsInfinity(velocity.y))
@@ -111,7 +99,7 @@ public class NoRbPlayerController : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
         }
-
+        //
         //isMoving checks 
 
         //logging player position at end of loop
@@ -123,6 +111,7 @@ public class NoRbPlayerController : MonoBehaviour
         //sneaking check for isMoving
         isSneaking = isCrouching && isMoving;
 
+        //edited here
         //sprinting check for isMoving
         if (currentSpeed > baseSpeed && isMoving)
         {
@@ -132,5 +121,27 @@ public class NoRbPlayerController : MonoBehaviour
         {
             isSprinting = false;
         }
+        ////////////////////////////
     }
+
+
+    //NEW ***********
+    void UpdateSpeed()
+    {
+        currentSpeed = baseSpeed;
+
+        if (Input.GetKey(KeyCode.LeftShift) && !attributes.noStamina)
+        {
+            currentSpeed *= 2;
+        }
+
+        if (isCrouching)
+        {
+            currentSpeed /= 2;
+        }
+
+        isSprinting = currentSpeed > baseSpeed;
+    }
+   
+    ////////////////////////
 }
