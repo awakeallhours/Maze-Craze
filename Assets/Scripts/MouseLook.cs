@@ -4,9 +4,6 @@ using TMPro;
 
 public class MouseLook : MonoBehaviour
 {
-    //todo: player height seems to have been affected by the intialLocalPosition
-    //todo: fix crouch
-
     [SerializeField, Tooltip("Mouse sensitivity")] float mouseSensitivity = 100f;
     [SerializeField, Tooltip("Head bob amount")] float bobAmount = 0f;
     [SerializeField, Tooltip("Head bob speed")] float bobSpeed = 0f;
@@ -80,20 +77,19 @@ public class MouseLook : MonoBehaviour
 
     void Headbob()
     {
-        //trying to adjust bobspeed for crouch
-
         float bobFactor;
         float currentBobSpeed = bobSpeed;
-        if (controller.isMoving )
+        float currentBobAmount = bobAmount;
+        if (controller.isMoving && controller.isCrouching)
         {
-            bobFactor = Mathf.Sin(Time.time *currentBobSpeed) * bobAmount;
+            bobFactor = Mathf.Sin(Time.time *currentBobSpeed * 0.5f) * currentBobAmount * 0.5f;
             Vector3 bobOffset = new Vector3(0f, bobFactor, 0f);
             transform.localPosition = initialLocalPosition + bobOffset;
         }
-        else if (controller.isMoving && controller.isCrouching)
+        else if (controller.isMoving)
         {
            
-            bobFactor = Mathf.Sin(Time.time * currentBobSpeed * 0.5f) * bobAmount;
+            bobFactor = Mathf.Sin(Time.time * currentBobSpeed) * currentBobAmount;
             Vector3 bobOffset = new Vector3(0f, bobFactor, 0f);
             transform.localPosition = initialLocalPosition + bobOffset;
         }
