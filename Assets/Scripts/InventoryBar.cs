@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+//using UnityEngine.UIElements;
 
 public class InventoryBar : MonoBehaviour
 {
@@ -9,10 +10,10 @@ public class InventoryBar : MonoBehaviour
 
     [SerializeField, Tooltip("How long will the inventory ribbon be visible for")] float visibilityTime = 3f;
     [SerializeField, Tooltip("Panel game object to be attached")] GameObject panel;
-    [SerializeField, Tooltip("Inventory slot image UI elements")] private List<Image> inventorySlotImages = new List<Image>();
+    [SerializeField, Tooltip("Inventory slot image UI elements")] private List<UnityEngine.UI.Image> inventorySlotImages = new List<UnityEngine.UI.Image>();
     [SerializeField, Tooltip("Text input field for collected keys")] private TextMeshProUGUI keysText;
     [SerializeField, Tooltip("Text input field for collected keys")] private TextMeshProUGUI compassText;
-    [SerializeField, Tooltip("Placeholder sprites for empty slots")] private Sprite emptySlotSprite;
+    [SerializeField, Tooltip("Placeholder sprites for empty slots")] private UnityEngine.Sprite emptySlotSprite;
 
     private Compass compass;
     private PlayerInventory inv;
@@ -52,15 +53,18 @@ public class InventoryBar : MonoBehaviour
     public void UpdateInventoryUI(List<Sprite> itemSprites, List<string> keys)
     {
         //clear all slots first
-        foreach(Image slotImage in inventorySlotImages)
+        for(int i = 0; i < inventorySlotImages.Count; i ++)
         {
-            slotImage.sprite = emptySlotSprite;
+            inventorySlotImages[i].sprite = emptySlotSprite;
         }
 
         //populate slots with images
         for(int i = 0; i < itemSprites.Count && i < inventorySlotImages.Count; i++)
         {
-            inventorySlotImages[i].sprite = itemSprites[i];
+            if (itemSprites[i] != null)
+            {
+                inventorySlotImages[i].sprite = itemSprites[i];
+            }
         }
 
         //update the keys text field
