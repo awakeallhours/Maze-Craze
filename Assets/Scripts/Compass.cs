@@ -34,7 +34,7 @@ public class Compass : MonoBehaviour
         if (needle != null)
         {
             // Ensure the needle rotation only affects the z-axis
-            needle.transform.localRotation = Quaternion.Euler(0, 0, -compassHeadingNumber);
+            needle.transform.localRotation = Quaternion.Euler(0, 0, compassHeadingNumber);
         }
     }
 }
