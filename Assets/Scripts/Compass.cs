@@ -5,37 +5,36 @@ public class Compass : MonoBehaviour
 {
     [SerializeField, Tooltip("Used for visual purposes only. Please do not edit this in the inspector")] public float compassHeadingNumber;
     [SerializeField, Tooltip("If empty, drag the game object associated with the player into this field")] private GameObject playerGameObject;
-    
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField, Tooltip("Needle of the compass")] private GameObject needle;
     void Start()
     {
         if (playerGameObject == null)
         {
             Debug.LogError(GetType().Name + ".cs - No player gameObject assigned in the inspector!");
         }
+        if (needle == null)
+        {
+            Debug.LogError(GetType().Name + ".cs - No needle gameObject assigned in the inspector!");
+        }
     }
-
-
-    // Update is called once per frame
     void Update()
     {
-        CompassHeading();
+        UpdateCompassHeading();
     }
-
-
-    float CompassHeading()
+    void UpdateCompassHeading()
     {
-        compassHeadingNumber = (float)Math.Round(playerGameObject.transform.rotation.eulerAngles.y);
-
-        if (compassHeadingNumber == 360f)
+        if (playerGameObject != null)
         {
-            compassHeadingNumber = 0f;
-            return compassHeadingNumber;
+            compassHeadingNumber = (float)Math.Round(playerGameObject.transform.rotation.eulerAngles.y % 360f);
+            UpdateNeedleRotation();
         }
-        else
+    }
+    void UpdateNeedleRotation()
+    {
+        if (needle != null)
         {
-            return compassHeadingNumber;
-        }    
+            // Ensure the needle rotation only affects the z-axis
+            needle.transform.localRotation = Quaternion.Euler(0, 0, -compassHeadingNumber);
+        }
     }
 }
