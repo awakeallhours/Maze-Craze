@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Torch : MonoBehaviour
 {
-    [SerializeField, Tooltip("Torch intensity default value is 3")] float torchIntensity; 
+    [SerializeField, Tooltip("Torch intensity default value is 3")] float torchIntensity;
+    [SerializeField, Tooltip("Torch works in conjunction with flickerspeed, higher values wont work unless flicker speed is adjusted as well")] float flickerTimer = 0.0f;
+    [SerializeField, Tooltip("Torch how often the flicker updates, increase to slow down effect. It's too obvious higher than about 0.3 ")] float flickerSpeed = 0.1f;
+    [SerializeField, Tooltip("Torch intensity divisor, increase for subtler effect, 165 is a decent number")] float divisor = 100f;
     private PlayerAttributes attributes;
     Light torch;
     public bool isOn = false;
@@ -31,7 +34,11 @@ public class Torch : MonoBehaviour
             ToggleTorch();
         }
 
-        TorchFlicker();
+        if(isOn)
+        {
+            TorchFlicker();
+        }
+        
        
         if(!attributes.torchAllowed)
         {
@@ -49,39 +56,39 @@ public class Torch : MonoBehaviour
             torch.enabled = isOn;
             TorchAudio();
         }
-
-        if (isOn)
-        {
-            TorchFlicker();
-            Debug.Log("Torch on");
-        }
-        else if (!isOn)
-        {
-            Debug.Log("Torch off");
-        }
     }
 
 
     void TorchFlicker()
     {
-        float flickerAmount = 0;
-
-        
-        //torch.enabled = true;
-
-        if (attributes.currentBattery >= 40)
+        if (torch == null)
         {
-            flickerAmount = Random.Range(-10f, 10f) * Time.deltaTime;
-        
+            Debug.LogWarning("Torch Light component is not assigned.");
+            return;
         }
-        else if (attributes.currentBattery < 40)
+
+        // Update the flicker timer
+        flickerTimer += Time.deltaTime;
+
+        // Only update the flicker effect at the specified flicker speed
+        if (flickerTimer >= flickerSpeed)
         {
-            flickerAmount = Random.Range(torchIntensity / 2, 1f) * Time.deltaTime;
+            // Scale torch intensity with battery level
+            float scaledIntensity = torchIntensity * (attributes.currentBattery / divisor);
+
+            // Calculate a very small flicker range for a subtle effect
+            float flickerRange = Mathf.Lerp(0.9999f, 1.0001f, attributes.currentBattery / divisor);
+            float flickerAmount = Random.Range(scaledIntensity * (1 - flickerRange), scaledIntensity * (1 + flickerRange));
+
+            // Calculate dynamic minimum threshold based on battery level
+            float minThreshold = Mathf.Lerp(0.1f, torchIntensity, attributes.currentBattery / 100f);
+            torch.intensity = Mathf.Max(flickerAmount, minThreshold);
+            Debug.Log($"Updated torch intensity: {torch.intensity} (Battery: {attributes.currentBattery})");
+
+            // Reset the flicker timer
+            flickerTimer = 0.0f;
         }
-        
-        torch.intensity = torchIntensity + flickerAmount;
     }
-
 
     void TorchAudio()
     {

@@ -12912,7 +12912,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67844d95c2326646953d9e1dfaeb75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torchIntensity: 1000
+  torchIntensity: 500
+  flickerTimer: 0.1
+  flickerSpeed: 0.1
+  divisor: 165
   isOn: 0
 --- !u!1 &1849950676
 GameObject:
@@ -14034,7 +14037,7 @@ MonoBehaviour:
   currentStamina: 0
   currentBattery: 0
   staminaDrain: 15
-  batteryDrain: 1
+  batteryDrain: 5
   staminaDelay: 2
   healthValue: {fileID: 1227735961}
   staminaValue: {fileID: 1718521102}

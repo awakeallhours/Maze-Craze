@@ -7,7 +7,7 @@ public class MouseLook : MonoBehaviour
     [SerializeField, Tooltip("Mouse sensitivity")] float mouseSensitivity = 100f;
     [SerializeField, Tooltip("Head bob amount")] float bobAmount = 0f;
     [SerializeField, Tooltip("Head bob speed")] float bobSpeed = 0f;
-
+    
     public Transform playerPrefab;
     private NoRbPlayerController controller;
 
@@ -77,16 +77,25 @@ public class MouseLook : MonoBehaviour
 
     void Headbob()
     {
+        //adjust float multipliers to increase decrease amount of bob depending on movement state
+
         float bobFactor;
         float currentBobSpeed = bobSpeed;
         float currentBobAmount = bobAmount;
         if (controller.isMoving && controller.isCrouching)
         {
-            bobFactor = Mathf.Sin(Time.time *currentBobSpeed * 0.5f) * currentBobAmount * 0.5f;
+            bobFactor = Mathf.Sin(Time.time * currentBobSpeed * 0.5f) * currentBobAmount * 0.5f;
             Vector3 bobOffset = new Vector3(0f, bobFactor, 0f);
             transform.localPosition = initialLocalPosition + bobOffset;
         }
-        else if (controller.isMoving)
+        else if (controller.isMoving && controller.isSprinting && !controller.isJumping)
+        {
+
+            bobFactor = Mathf.Sin(Time.time * currentBobSpeed * 2f) * currentBobAmount * 1.1f;
+            Vector3 bobOffset = new Vector3(0f, bobFactor, 0f);
+            transform.localPosition = initialLocalPosition + bobOffset;
+        }
+        else if (controller.isMoving && !controller.isJumping)
         {
            
             bobFactor = Mathf.Sin(Time.time * currentBobSpeed) * currentBobAmount;
