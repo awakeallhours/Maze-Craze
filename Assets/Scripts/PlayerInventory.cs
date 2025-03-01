@@ -12,11 +12,12 @@ public class PlayerInventory : MonoBehaviour
     
     private InventoryBar inventoryBar;
     private Pickups pickup;
+    private Glowstick glowstick;
     void Start()
     {
         inventoryBar = FindFirstObjectByType<InventoryBar>();
         pickup = FindFirstObjectByType<Pickups>();
-        
+        glowstick = FindFirstObjectByType<Glowstick>();
         //redDoorKey added for testing purposes
         keys.Add("redDoorKey");
         inventoryBar.UpdateInventoryUI(itemSprites, keys);
@@ -95,16 +96,15 @@ public class PlayerInventory : MonoBehaviour
     {
         if (slot >= 0 && slot < itemSprites.Count)
         {
-            Debug.Log("Using item in slot " + (slot + 1));
-
-            // Item behaviours
+            
 
             // Get the sprite in the selected slot
             Sprite itemSprite = itemSprites[slot];
 
             // Get the name of the sprite
-            string itemName = itemSprite.name; 
-
+            string itemName = itemSprite.name;
+            Debug.Log("Using item in slot " + (slot + 1 + itemName));
+            // Item behaviours
             if (itemName == "Battery_placeholder_0")
             {
                 pickup.ChargeBattery();
@@ -116,6 +116,11 @@ public class PlayerInventory : MonoBehaviour
                 pickup.Heal();
                 RemoveItem(slot); 
                 inventoryBar.UpdateInventoryUI(itemSprites, keys);
+            }
+            else if(itemName == "Checkmark")
+            {
+                Debug.Log("Glowstick inventory call");
+                glowstick.ThrowGlowstick();
             }
         }
         else

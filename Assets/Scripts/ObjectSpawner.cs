@@ -41,7 +41,7 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
-    void SpawnObject()
+    public void SpawnObject()
     {
         if (itemInstance == null && respawnable)
         {
