@@ -13,10 +13,8 @@ GameObject:
   - component: {fileID: 2198012431052767042}
   - component: {fileID: 7910413392945727144}
   - component: {fileID: -5726637766394752488}
-  - component: {fileID: -2551142866422296504}
-  - component: {fileID: 79242186098900848}
   m_Layer: 0
-  m_Name: Glowstick
+  m_Name: PickupGlowstick
   m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,56 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restore: 0
   rotationSpeed: 10
-  itemSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  itemSprite: {fileID: 1476942817, guid: 97d6cb373a941f7439c26a0d3dfea12d, type: 3}
   isKey: 0
---- !u!114 &-2551142866422296504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4648929293966440599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcb7dcc7d9c9bc847887e8c0abcf9777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  throwable: {fileID: 4648929293966440599, guid: fabbaad9a3a567844863b5f3664220cf, type: 3}
-  glowColour: {r: 0, g: 0.91764706, b: 0.14509805, a: 1}
-  lightColour: {r: 0, g: 0, b: 0, a: 0}
-  glowLight: {fileID: 3721474747100206429}
-  glowIntensity: 0
-  illuminationDuration: 10
-  emissionIntensity: 1.5
-  timer: 0
-  isGlowing: 0
---- !u!54 &79242186098900848
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4648929293966440599}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &6179844362634300194
 GameObject:
   m_ObjectHideFlags: 0

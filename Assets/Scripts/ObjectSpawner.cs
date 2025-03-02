@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 
 public class ObjectSpawner : MonoBehaviour
@@ -15,7 +16,12 @@ public class ObjectSpawner : MonoBehaviour
 
     private void Start()
     {
-        SpawnObject();
+        if(!itemPrefab.CompareTag("Glowstick"))
+        {
+            SpawnObject();
+        }
+        
+        
     }
 
     private void Update()
@@ -52,6 +58,22 @@ public class ObjectSpawner : MonoBehaviour
             if (itemPrefab.name == "Key") 
             {
                 itemInstance.name = itemID;
+            }
+        }
+    }
+
+    public void SpawnGlowstick()
+    {
+        if (itemInstance == null)
+        {
+            GameObject glowstickObj = Instantiate(itemPrefab, transform.position, Quaternion.identity);
+            Glowstick glowstick = glowstickObj.GetComponent<Glowstick>();
+
+        
+            if (glowstickObj != null)
+            {
+                Debug.Log("spawner glowstick call");
+                glowstick.ThrowGlowstick();
             }
         }
     }

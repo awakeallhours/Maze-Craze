@@ -1,63 +1,60 @@
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class Glowstick : MonoBehaviour
 {
-    [SerializeField, Tooltip("Throwable glowstick prefab")] GameObject throwable = null;
-    [SerializeField, Tooltip("Glowstick colour")] private Color glowColour;
-    [SerializeField, Tooltip("Glowstick light colour")] private Color lightColour;
-    [SerializeField, Tooltip("Glowstick light object")] private Light glowLight;
+    [SerializeField, Tooltip("Glowstick base colour")] private Color glowColour;
+    [SerializeField, Tooltip("Glowstick colour of light emitted")] private Color lightColour;
     [SerializeField, Tooltip("Glowstick light intensity")] private float glowIntensity;
     [SerializeField, Tooltip("Illumination duration")] private float illuminationDuration = 10f;
     [SerializeField, Tooltip("Emission intensity multiplier")] private float emissionIntensity = 1.5f;
+    [SerializeField, Tooltip("Force of throw")] private float throwForce;
+    [SerializeField, Tooltip("Reference to the light component")] private Light glowLight; // Public light component
+    [SerializeField, Tooltip("Reference to the renderer component")] private Renderer glowRenderer; // Allows us to change the material
 
-    //Allows us to change the material
-    private Renderer glowRenderer;
+    private float forceMultiplier = 100;
     private Rigidbody rb;
-    private NoRbPlayerController controller;
-
-    public float timer;
+    private float timer;
     public bool isGlowing = false;
 
     void Start()
     {
+        Debug.Log("Glowstick Start method is running.");
+
         rb = GetComponent<Rigidbody>();
-        glowRenderer = GetComponent<Renderer>();
-        controller = FindFirstObjectByType<NoRbPlayerController>();
-        glowLight.enabled = false;
-        SetGlowState(false);
-        rb.useGravity = false;
+
+        glowLight.enabled = true;
+        glowLight.intensity = glowIntensity; // Set the initial intensity
+        glowLight.color = lightColour; // Set the initial color
     }
 
     void Update()
     {
-        
+
     }
 
     void SetGlowState(bool state)
     {
         glowLight.enabled = state;
-        glowLight.color = lightColour;
-        glowLight.intensity = state ? glowIntensity : 0;
         glowRenderer.material.color = glowColour;
         
-
         if (state)
         {
-            glowRenderer.material.EnableKeyword("_EMISSION") ;
+            glowRenderer.material.EnableKeyword("_EMISSION");
             glowRenderer.material.SetColor("_EmissionColor", glowColour * Mathf.LinearToGammaSpace(emissionIntensity));
-
+            Debug.Log("Glowstick emission enabled.");
         }
         else
         {
             glowRenderer.material.DisableKeyword("_EMISSION");
+            glowRenderer.material.SetColor("_EmissionColor", glowColour / Mathf.LinearToGammaSpace(emissionIntensity));
+            Debug.Log("Glowstick emission disabled.");
         }
     }
+    
 
     private IEnumerator UseGlowstick()
     {
-        
         timer = illuminationDuration;
         SetGlowState(true);
         isGlowing = true;
@@ -69,15 +66,21 @@ public class Glowstick : MonoBehaviour
 
         SetGlowState(false);
         isGlowing = false;
+        
     }
 
     public void ThrowGlowstick()
     {
-        //This version does not correctly work but it is the safe version before i change the script too much
+        StartCoroutine(UseGlowstick());
+        if (rb != null)
+        {
+            rb.useGravity = true;
+            // Calculating the force vector
+            Vector3 forceVector = transform.forward * throwForce * forceMultiplier;
+            Debug.Log("Applying force: " + forceVector);
 
-        //Instantiate(throwable, controller.transform.position, Quaternion.identity);
-        //StartCoroutine(UseGlowstick());
-        //rb.useGravity = true;
-        Debug.Log("GLOWSTICK SPAWNED");
+            // Apply force
+            rb.AddForce(forceVector, ForceMode.Impulse);
+        }
     }
 }

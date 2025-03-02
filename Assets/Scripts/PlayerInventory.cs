@@ -12,12 +12,14 @@ public class PlayerInventory : MonoBehaviour
     
     private InventoryBar inventoryBar;
     private Pickups pickup;
-    private Glowstick glowstick;
+    private ObjectSpawner playerSpawner;
+    private NoRbPlayerController player; 
     void Start()
     {
         inventoryBar = FindFirstObjectByType<InventoryBar>();
         pickup = FindFirstObjectByType<Pickups>();
-        glowstick = FindFirstObjectByType<Glowstick>();
+        player = FindAnyObjectByType<NoRbPlayerController>();
+        playerSpawner = player.GetComponentInChildren<ObjectSpawner>();
         //redDoorKey added for testing purposes
         keys.Add("redDoorKey");
         inventoryBar.UpdateInventoryUI(itemSprites, keys);
@@ -96,7 +98,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if (slot >= 0 && slot < itemSprites.Count)
         {
-            
+
 
             // Get the sprite in the selected slot
             Sprite itemSprite = itemSprites[slot];
@@ -108,24 +110,26 @@ public class PlayerInventory : MonoBehaviour
             if (itemName == "Battery_placeholder_0")
             {
                 pickup.ChargeBattery();
-                RemoveItem(slot); 
+                RemoveItem(slot);
                 inventoryBar.UpdateInventoryUI(itemSprites, keys);
             }
             else if (itemName == "Medkit_placeholder_0")
             {
                 pickup.Heal();
-                RemoveItem(slot); 
+                RemoveItem(slot);
                 inventoryBar.UpdateInventoryUI(itemSprites, keys);
             }
-            else if(itemName == "Checkmark")
+            else if (itemName == "Glowstick_placeholder_0")
             {
                 Debug.Log("Glowstick inventory call");
-                glowstick.ThrowGlowstick();
+                playerSpawner.SpawnGlowstick();
+                RemoveItem(slot);
+                inventoryBar.UpdateInventoryUI(itemSprites, keys);
             }
-        }
-        else
-        {
-            Debug.Log("No item in this slot.");
+            else
+            {
+                Debug.Log("No item in this slot.");
+            }
         }
     }
 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4648929293966440599
+--- !u!1 &1005522825302899608
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7263615920715803759}
-  - component: {fileID: 8196840132966636099}
-  - component: {fileID: 2198012431052767042}
-  - component: {fileID: 7910413392945727144}
-  - component: {fileID: 4672968954772881207}
-  - component: {fileID: 2241459731192811590}
+  - component: {fileID: 2399517522673513460}
+  - component: {fileID: 7796231332560147506}
+  - component: {fileID: 8893686563444784197}
+  - component: {fileID: 7431232495197927238}
+  - component: {fileID: 7307906735130962565}
+  - component: {fileID: 6667398383369416002}
   m_Layer: 0
   m_Name: ThrowableGlowstick
   m_TagString: Glowstick
@@ -21,37 +21,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7263615920715803759
+--- !u!4 &2399517522673513460
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4648929293966440599}
+  m_GameObject: {fileID: 1005522825302899608}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.4286, y: 1.35, z: 0}
   m_LocalScale: {x: 0.05, y: 0.2, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3392391753521148737}
+  - {fileID: 3277748035916358751}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8196840132966636099
+--- !u!33 &7796231332560147506
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4648929293966440599}
+  m_GameObject: {fileID: 1005522825302899608}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2198012431052767042
+--- !u!23 &8893686563444784197
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4648929293966440599}
+  m_GameObject: {fileID: 1005522825302899608}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -90,13 +90,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7910413392945727144
+--- !u!136 &7431232495197927238
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4648929293966440599}
+  m_GameObject: {fileID: 1005522825302899608}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -113,36 +113,15 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &4672968954772881207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4648929293966440599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcb7dcc7d9c9bc847887e8c0abcf9777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  throwable: {fileID: 4648929293966440599}
-  glowColour: {r: 0, g: 0.91764706, b: 0.14509805, a: 1}
-  lightColour: {r: 0, g: 0.91764706, b: 0.14509805, a: 1}
-  glowLight: {fileID: 3721474747100206429}
-  glowIntensity: 2
-  illuminationDuration: 10
-  emissionIntensity: 5
-  timer: 0
-  isGlowing: 0
---- !u!54 &2241459731192811590
+--- !u!54 &7307906735130962565
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4648929293966440599}
+  m_GameObject: {fileID: 1005522825302899608}
   serializedVersion: 4
-  m_Mass: 0.1
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -156,12 +135,33 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &6179844362634300194
+--- !u!114 &6667398383369416002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005522825302899608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb7dcc7d9c9bc847887e8c0abcf9777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColour: {r: 0.073506415, g: 0.57412386, b: 0.11395919, a: 1}
+  lightColour: {r: 0.221718, g: 0.8436657, b: 0.27134565, a: 1}
+  glowIntensity: 1000
+  illuminationDuration: 5
+  emissionIntensity: 1.5
+  throwForce: 1
+  glowLight: {fileID: 6496641297470900857}
+  glowRenderer: {fileID: 8893686563444784197}
+  isGlowing: 0
+--- !u!1 &6115847899291807103
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,49 +169,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3392391753521148737}
-  - component: {fileID: 3721474747100206429}
-  - component: {fileID: 4320833356321853071}
+  - component: {fileID: 3277748035916358751}
+  - component: {fileID: 6496641297470900857}
+  - component: {fileID: 3055621136101999540}
   m_Layer: 0
-  m_Name: GlowstickLight
+  m_Name: testlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3392391753521148737
+--- !u!4 &3277748035916358751
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6179844362634300194}
+  m_GameObject: {fileID: 6115847899291807103}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7263615920715803759}
+  m_Father: {fileID: 2399517522673513460}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &3721474747100206429
+--- !u!108 &6496641297470900857
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6179844362634300194}
+  m_GameObject: {fileID: 6115847899291807103}
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 0, g: 0.9191374, b: 0.14473195, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -259,13 +259,13 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!114 &4320833356321853071
+--- !u!114 &3055621136101999540
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6179844362634300194}
+  m_GameObject: {fileID: 6115847899291807103}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
