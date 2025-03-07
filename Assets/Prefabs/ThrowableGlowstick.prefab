@@ -154,8 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColour: {r: 0.073506415, g: 0.57412386, b: 0.11395919, a: 1}
   lightColour: {r: 0.221718, g: 0.8436657, b: 0.27134565, a: 1}
-  glowIntensity: 1000
-  illuminationDuration: 5
+  glowIntensity: 5
+  illuminationDuration: 30
   emissionIntensity: 1.5
   throwForce: 1
   glowLight: {fileID: 6496641297470900857}

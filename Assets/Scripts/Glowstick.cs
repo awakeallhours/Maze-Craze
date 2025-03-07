@@ -30,7 +30,12 @@ public class Glowstick : MonoBehaviour
 
     void Update()
     {
+        ApplyForce();
+    }
 
+    private void FixedUpdate()
+    {
+        
     }
 
     void SetGlowState(bool state)
@@ -69,6 +74,11 @@ public class Glowstick : MonoBehaviour
         
     }
 
+    void ApplyForce()
+    {
+        Vector3 forceVector = transform.forward * throwForce * forceMultiplier;
+        rb.AddForce(forceVector, ForceMode.Impulse);
+    }
     public void ThrowGlowstick()
     {
         StartCoroutine(UseGlowstick());
@@ -76,11 +86,12 @@ public class Glowstick : MonoBehaviour
         {
             rb.useGravity = true;
             // Calculating the force vector
-            Vector3 forceVector = transform.forward * throwForce * forceMultiplier;
-            Debug.Log("Applying force: " + forceVector);
+            
+            //Debug.Log("Applying force: " + forceVector);
 
+            
             // Apply force
-            rb.AddForce(forceVector, ForceMode.Impulse);
+           
         }
     }
 }
