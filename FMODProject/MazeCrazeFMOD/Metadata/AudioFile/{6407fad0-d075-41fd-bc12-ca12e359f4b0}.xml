@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{69a30d61-82fd-4b55-b5e8-e9c9aa6c0298}">
+	<object class="AudioFile" id="{6407fad0-d075-41fd-bc12-ca12e359f4b0}">
 		<property name="assetPath">
-			<value>Environment_Door_Unlock/Key_Insert_002.wav</value>
+			<value>Environment_Door_Unlock/Door_Unlock_004.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
@@ -11,7 +11,7 @@
 			<value>1</value>
 		</property>
 		<property name="length">
-			<value>0.875</value>
+			<value>1.0416666666666667</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{0ebf0726-4e66-466a-a0f1-1dd2e24a4fd9}</destination>
