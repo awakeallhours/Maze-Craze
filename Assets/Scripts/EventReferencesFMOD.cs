@@ -12,6 +12,7 @@ public class EventReferencesFMOD : MonoBehaviour
     [field: SerializeField] public EventReference playerTorchToggle {get; private set;}
     [field: SerializeField] public EventReference playerJump {get; private set;}
     [field: SerializeField] public EventReference playerLand {get; private set;}
+    [field: SerializeField] public EventReference environmentDoorUnlock {get; private set;}
 
 
     //ensure that only 1 EventReferencesFMOD instance is created
