@@ -1,4 +1,6 @@
+using Debug = UnityEngine.Debug;
 using System.Collections;
+using FMOD.Studio;
 using UnityEngine;
 
 
@@ -18,6 +20,9 @@ public class DoorIntereaction : MonoBehaviour
     bool isOpen;
     public bool canOpen;
     private PlayerInventory inv;
+
+    //FMOD
+    private EventInstance environmentDoorUnlockEventInstance;
     
 
     private void Start()
@@ -89,6 +94,7 @@ public class DoorIntereaction : MonoBehaviour
     public void UnlockDoor()
     {
         isLocked = false;
+        UnlockDoorAudio();
     }
     
     private void OnTriggerStay(Collider other)
@@ -107,5 +113,13 @@ public class DoorIntereaction : MonoBehaviour
             
             canOpen = false;
         }
+    }
+
+    void UnlockDoorAudio()
+    {
+        environmentDoorUnlockEventInstance = AudioManager.audioManagerInstance.CreateEventInstance(EventReferencesFMOD.eventReferencesFMODInstance.environmentDoorUnlock);
+        environmentDoorUnlockEventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+        environmentDoorUnlockEventInstance.start();
+        environmentDoorUnlockEventInstance.release();
     }
 }

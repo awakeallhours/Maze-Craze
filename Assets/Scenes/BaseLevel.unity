@@ -1809,6 +1809,13 @@ MonoBehaviour:
       Data3: -2036545134
       Data4: 1079322924
     Path: event:/Player_Land
+  <environmentDoorUnlock>k__BackingField:
+    Guid:
+      Data1: 1743290521
+      Data2: 1183051091
+      Data3: -1464113007
+      Data4: 500476520
+    Path: event:/Environment_Door_Unlock
 --- !u!1 &261054829
 GameObject:
   m_ObjectHideFlags: 0
